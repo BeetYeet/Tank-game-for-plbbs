@@ -248,3 +248,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 3334476623477935017}
+  hitEffect: {fileID: 8461784997414014446, guid: 8af4798e2c8335a40a2a633e477b08c9,
+    type: 3}

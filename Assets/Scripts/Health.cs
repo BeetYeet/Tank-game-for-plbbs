@@ -9,7 +9,6 @@ public class Health : MonoBehaviour
 	public SoundManager sSource;
 	public AudioClip hitSound1;
 	public AudioClip hitSound2;
-
 	private void Start()
 	{
 		//SoundManager.instance.RandomizeSfx(hitSound1, hitSound2);
