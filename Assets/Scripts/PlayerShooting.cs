@@ -17,6 +17,9 @@ public class PlayerShooting : MonoBehaviour
 	public Transform shootPoint;
 	public string fireButton = "Fire1";
 
+	private bool debug = false;
+	public float maxCurrRange;
+
 	void Start()
 	{
 
@@ -45,6 +48,11 @@ public class PlayerShooting : MonoBehaviour
 		if (currCooldown == 0f && Input.GetButtonUp(fireButton))
 		{
 			Fire();
+		}
+		if (debug)
+		{
+			if (currRange < maxCurrRange)
+				maxCurrRange = currRange;
 		}
 	}
 
