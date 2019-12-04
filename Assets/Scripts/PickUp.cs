@@ -10,11 +10,16 @@ public class PickUp : MonoBehaviour
 
     private int pickUpNumber = 0;
 
-    public MovementTest move; //Refrencing the movement script
+    //Refrencing the scripts
+    public MovementTest move;
+    public PlayerShooting hurt;
+    public Health health;
 
     void Start()
     {
         move = GameObject.FindObjectOfType<MovementTest>();
+        hurt = GameObject.FindObjectOfType<PlayerShooting>();
+        health = GameObject.FindObjectOfType<Health>();
     }
 
     // Update is called once per frame
@@ -27,7 +32,7 @@ public class PickUp : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            pickUpNumber = Random.Range(0, 2);
+            pickUpNumber = Random.Range(0, 3);
             Destroy(gameObject);
         }
 
@@ -53,11 +58,13 @@ public class PickUp : MonoBehaviour
 
     void Damage() //Increases Damage
     {
+        hurt.bulletDamage += damageUp;
         Debug.Log("DamageUp active");
     }
 
     void Health() //Increases health
     {
+        health.objectHealth += healthUp;
         Debug.Log("HealthUp active");
     }
 }
