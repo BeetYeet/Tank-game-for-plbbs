@@ -21,10 +21,10 @@ public class BulletScript : MonoBehaviour
 	private void OnCollisionEnter(Collision collision)
 	{
 		Health hitHealth = collision.gameObject.GetComponent<Health>();
+		Destroy(gameObject);
 		if (hitHealth != null)
 		{
 			hitHealth.DoDamage(damage);
 		}
-		Destroy(gameObject);
 	}
 }
