@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Scenes/Toung's TestScene.unity
+- path: Assets/Scenes/Alfreds Scen.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
