@@ -966,6 +966,11 @@ PrefabInstance:
       propertyPath: damage
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 8969861145015594965, guid: 7fafec5dec0e6e5449b39d068187650c,
+        type: 3}
+      propertyPath: timer
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 7fafec5dec0e6e5449b39d068187650c, type: 3}
