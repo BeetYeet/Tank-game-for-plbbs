@@ -7,6 +7,7 @@ public class BulletScript : MonoBehaviour
 
 	public Rigidbody rb;
 	int damage;
+    public GameObject hitEffect;
 
 	public void Initialize(int damage)
 	{
@@ -26,5 +27,6 @@ public class BulletScript : MonoBehaviour
 			hitHealth.DoDamage(damage);
 		}
 		Destroy(gameObject);
+        Instantiate(hitEffect, transform.position, transform.rotation);
 	}
 }
