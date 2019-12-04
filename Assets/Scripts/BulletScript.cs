@@ -6,9 +6,9 @@ public class BulletScript : MonoBehaviour
 {
 
 	public Rigidbody rb;
-	float damage;
+	int damage;
 
-	public void Initialize(float damage)
+	public void Initialize(int damage)
 	{
 		this.damage = damage;
 	}
@@ -20,6 +20,11 @@ public class BulletScript : MonoBehaviour
 
 	private void OnCollisionEnter(Collision collision)
 	{
+		Health hitHealth = collision.gameObject.GetComponent<Health>();
+		if (hitHealth != null)
+		{
+			hitHealth.DoDamage(damage);
+		}
 		Destroy(gameObject);
 	}
 }

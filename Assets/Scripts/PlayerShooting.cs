@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerShooting : MonoBehaviour
 {
-	public float bulletDamage;
+	public int bulletDamage;
 	public float startRange;
 	public float range;
 	public float rangeFactor;
@@ -52,6 +52,7 @@ public class PlayerShooting : MonoBehaviour
 	{
 		GameObject _ = Instantiate(bullet, shootPoint.position, shootPoint.rotation);
 		_.GetComponent<Rigidbody>().AddForce(shootPoint.forward * currRange * range);
+		_.GetComponent<BulletScript>().Initialize(bulletDamage);
 		currRange = 0f;
 		currCooldown = cooldown;
 	}
