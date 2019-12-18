@@ -8,6 +8,7 @@ public class MainMenuScript : MonoBehaviour
     public int selection;
     public bool selectedMap = false;
     public AudioClip selectionSound;
+    public bool change = false;
 
     void Update()
     {
@@ -34,8 +35,9 @@ public class MainMenuScript : MonoBehaviour
     }
     public void LoadMap()
     {
-        SoundManager.instance.PlaySingle(selectionSound);
-        SceneManager.LoadScene(1);
+        //SoundManager.instance.PlaySingle(selectionSound);
+        //SceneManager.LoadScene(1);
+        change = true;
     }
     public void LoadCredits()
     {
