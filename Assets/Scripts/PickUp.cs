@@ -28,13 +28,14 @@ public class PickUp : MonoBehaviour
 
     }
 
-    public void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collider)
     {
-        if (collision.gameObject.tag == "Player")
+        if(collider.gameObject.tag == "Player")
         {
             pickUpNumber = Random.Range(0, 3);
             Destroy(gameObject);
         }
+    
 
         if (pickUpNumber == 0)
         {
