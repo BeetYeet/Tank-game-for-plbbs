@@ -42,7 +42,7 @@ public class SoundManager : MonoBehaviour
         eFXsound.clip = clips[randomIndex];
         eFXsound.Play();
     }
-    public void firstPlayerSFX(params AudioClip[] clips)
+    public void FirstPlayerSFX(params AudioClip[] clips)
     {
         int randomIndex = Random.Range(0, clips.Length);
         float randomPitch = Random.Range(lowPitch, highPitch);
@@ -50,7 +50,7 @@ public class SoundManager : MonoBehaviour
         firstPlayerSource.clip = clips[randomIndex];
         firstPlayerSource.Play();
     }
-    public void secondPlayerSfx(params AudioClip[] clips)
+    public void SecondPlayerSfx(params AudioClip[] clips)
     {
         int randomIndex = Random.Range(0, clips.Length);
         float randomPitch = Random.Range(lowPitch, highPitch);
