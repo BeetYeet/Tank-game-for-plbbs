@@ -10,12 +10,15 @@ public class Transition : MonoBehaviour
 
     public MainMenuScript trigger;
 
+    private void Start()
+    {
+        trigger = GameObject.FindObjectOfType<MainMenuScript>();
+    }
+
     // Update is called once per frame
     void Update()
     {
-        trigger = GameObject.FindObjectOfType<MainMenuScript>();
-
-        if (trigger.change == true)
+        if (trigger != null && trigger.change == true)
         {
             StartCoroutine(LoadScene());
         }
