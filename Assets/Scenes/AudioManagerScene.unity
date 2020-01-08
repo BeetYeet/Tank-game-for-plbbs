@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1028,13 +1028,14 @@ GameObject:
   - component: {fileID: 1072464187}
   - component: {fileID: 1072464186}
   - component: {fileID: 1072464190}
+  - component: {fileID: 1072464191}
   m_Layer: 5
   m_Name: EndGameMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1072464186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1129,6 +1130,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd8211b0e4f933419e2af430284ce45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1072464191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1072464185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e28c930ac5009de42bd799bb32277348, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player1: {fileID: 0}
+  player2: {fileID: 0}
+  restartCanvas: {fileID: 0}
 --- !u!1 &1144435450
 GameObject:
   m_ObjectHideFlags: 0
@@ -1856,6 +1872,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transitionAnim: {fileID: 1263556643}
   sceneName: AudioManagerScene
+  trigger: {fileID: 0}
 --- !u!4 &1501695327
 Transform:
   m_ObjectHideFlags: 0
