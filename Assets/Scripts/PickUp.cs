@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PickUp : MonoBehaviour
 {
+    public GameObject floatingTextPrefab;
+
     public int speedUp;
     public int damageUp;
     public int healthUp;
@@ -30,12 +32,18 @@ public class PickUp : MonoBehaviour
 
     private void OnTriggerEnter(Collider collider)
     {
-        if(collider.gameObject.tag == "Player")
+        if (collider.gameObject.tag == "Player")
         {
             pickUpNumber = Random.Range(0, 3);
             Destroy(gameObject);
         }
-    
+
+        if (floatingTextPrefab)
+        {
+            ShowUpgrade();
+
+        }
+
 
         if (pickUpNumber == 0)
         {
@@ -67,5 +75,10 @@ public class PickUp : MonoBehaviour
     {
         health.objectHealth += healthUp;
         Debug.Log("HealthUp active");
+    }
+
+    void ShowUpgrade()
+    {
+        Instantiate(floatingTextPrefab, transform.position, Quaternion.identity, transform);
     }
 }
