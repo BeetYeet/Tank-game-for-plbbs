@@ -178,8 +178,8 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: c16fbde23958a284c9eb9f77157222e5, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -246,6 +246,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transitionAnim: {fileID: 43775032}
   sceneName: AudioManagerScene
+  trigger: {fileID: 0}
 --- !u!4 &115642011
 Transform:
   m_ObjectHideFlags: 0
@@ -1226,6 +1227,7 @@ MonoBehaviour:
   selection: 0
   selectedMap: 0
   selectionSound: {fileID: 8300000, guid: a58ed6c97499e3243a6fc7371bdeca18, type: 3}
+  change: 0
 --- !u!114 &1407482019
 MonoBehaviour:
   m_ObjectHideFlags: 0
