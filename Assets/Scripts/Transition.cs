@@ -15,7 +15,6 @@ public class Transition : MonoBehaviour
         trigger = GameObject.FindObjectOfType<MainMenuScript>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (trigger != null && trigger.change == true)
