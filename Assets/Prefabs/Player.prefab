@@ -316,7 +316,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentGasPower: 0
-  BrakePower: -1
+  BrakePower: -3
   GasLimit: 5
   GasForce: 7
   CurrentBrake: 0
