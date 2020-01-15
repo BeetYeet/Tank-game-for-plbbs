@@ -5,18 +5,21 @@ using UnityEngine.Audio;
 
 public class Health : MonoBehaviour
 {
-	public int objectHealth;
+	public int health;
+	public int maxHealth;
+
 	public AudioClip hitSound1;
 	public AudioClip hitSound2;
     public HealthBar hpBar;
 	private void Start()
 	{
+		health = maxHealth;
 		//SoundManager.instance.RandomizeSfx(hitSound1, hitSound2);
 	}
 
 	void Update()
 	{
-		if (objectHealth <= 0)
+		if (health <= 0)
 		{
 			Destroy(gameObject);
 		}
@@ -28,7 +31,7 @@ public class Health : MonoBehaviour
 
 	public void DoDamage(int damage)
 	{
-		objectHealth -= damage;
+		health -= damage;
 		SoundManager.instance.RandomizeSfx(hitSound1, hitSound2);
         hpBar.StartAnimation();
 	}

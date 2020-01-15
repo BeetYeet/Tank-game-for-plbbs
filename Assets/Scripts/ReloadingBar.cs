@@ -17,7 +17,7 @@ public class ReloadingBar : MonoBehaviour
     {
         localScale.x = playerShooting.currCooldown * 3;
         transform.localScale = localScale;
-        if (playerShooting.currCooldown > 0 && Input.GetButton(playerShooting.fireButton))
+        if (playerShooting.currCooldown > 0 && Input.GetButton(PlayerShooting.fireButton))
         {
             StartAnimation();
         }
