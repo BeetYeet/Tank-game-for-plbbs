@@ -11,7 +11,7 @@ public class PlayerShooting : MonoBehaviour
 	public float rangeChargeUp;
 	float currRange;
 	public float cooldown;
-	float currCooldown;
+	public float currCooldown;
 
 	public GameObject bullet;
 	public Transform shootPoint;

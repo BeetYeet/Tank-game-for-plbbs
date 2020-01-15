@@ -8,6 +8,7 @@ public class BulletScript : MonoBehaviour
     public Rigidbody rb;
     int damage;
     public GameObject hitEffect;
+    public GameObject nullHitEffect;
     public SoundManager sm;
     public AudioClip hitSound;
     private void Start()
@@ -32,9 +33,15 @@ public class BulletScript : MonoBehaviour
         {
             hitHealth.DoDamage(damage);
         }
+        if (collision.gameObject.tag != "Player")
+        {
+            Instantiate(nullHitEffect, transform.position, transform.rotation);
+        }
+        else
+        {
+            Instantiate(hitEffect, transform.position, transform.rotation);
+        }
         Destroy(gameObject);
-        Instantiate(hitEffect, transform.position, transform.rotation);
         SoundManager.instance.PlaySingle(hitSound);
-
     }
 }
