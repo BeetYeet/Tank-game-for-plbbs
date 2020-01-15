@@ -10,5 +10,9 @@ public class MainMenuGoBack : MonoBehaviour
     {
         SceneManager.LoadScene("MainMenuScene");
     }
+    public void Restart()
+    {
+        SceneManager.LoadScene(1);
+    }
 
 }
