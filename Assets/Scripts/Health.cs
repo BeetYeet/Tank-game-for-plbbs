@@ -6,7 +6,6 @@ using UnityEngine.Audio;
 public class Health : MonoBehaviour
 {
 	public int objectHealth;
-	public SoundManager sSource;
 	public AudioClip hitSound1;
 	public AudioClip hitSound2;
     public HealthBar hpBar;
