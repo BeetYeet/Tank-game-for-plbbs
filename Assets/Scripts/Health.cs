@@ -8,6 +8,7 @@ public class Health : MonoBehaviour
 	public int objectHealth;
 	public AudioClip hitSound1;
 	public AudioClip hitSound2;
+    public HealthBar hpBar;
 	private void Start()
 	{
 		//SoundManager.instance.RandomizeSfx(hitSound1, hitSound2);
@@ -21,7 +22,7 @@ public class Health : MonoBehaviour
 		}
 		if (Input.GetKeyDown(KeyCode.H))
 		{
-			SoundManager.instance.RandomizeSfx(hitSound1, hitSound2);
+            DoDamage(1);
 		}
 	}
 
@@ -29,5 +30,6 @@ public class Health : MonoBehaviour
 	{
 		objectHealth -= damage;
 		SoundManager.instance.RandomizeSfx(hitSound1, hitSound2);
+        hpBar.StartAnimation();
 	}
 }

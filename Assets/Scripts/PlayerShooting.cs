@@ -12,11 +12,11 @@ public class PlayerShooting : MonoBehaviour
 	public float rangeChargeUp;
 	float currRange;
 	public float cooldown;
-	float currCooldown;
+	public float currCooldown;
 
 	public GameObject bullet;
 	public Transform shootPoint;
-	public string fireButton = "Fire1";
+	string fireButton = "Fire_";
 
 	private bool debug = false;
 	public float maxCurrRange;
@@ -89,15 +89,15 @@ public class PlayerShooting : MonoBehaviour
 				}
 			}
 		}
-		if (currCooldown == 0f && Input.GetButtonDown(fireButton))
+		if (currCooldown == 0f && Input.GetButtonDown(fireButton + gameObject.name))
 		{
 			StartCharge();
 		}
-		if (currCooldown == 0f && Input.GetButton(fireButton))
+		if (currCooldown == 0f && Input.GetButton(fireButton + gameObject.name))
 		{
 			ContinueCharge();
 		}
-		if (currCooldown == 0f && Input.GetButtonUp(fireButton))
+		if (currCooldown == 0f && Input.GetButtonUp(fireButton + gameObject.name))
 		{
 			EndCharge();
 		}
