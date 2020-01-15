@@ -123,9 +123,10 @@ GameObject:
   - component: {fileID: 1958486082547183772}
   - component: {fileID: 1958486082547183774}
   - component: {fileID: 1958486082547183775}
-  - component: {fileID: 1958486082547183769}
+  - component: {fileID: 5257502039137238474}
+  - component: {fileID: 180217418420483363}
   m_Layer: 0
-  m_Name: Player 1
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -145,6 +146,7 @@ Transform:
   - {fileID: 1958486083035531709}
   - {fileID: 1958486081979993172}
   - {fileID: 1958486083744207943}
+  - {fileID: 5051909056264535226}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -201,7 +203,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1958486082547183761}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 80ceb12394c10874486e31e925025e3c, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -259,9 +261,8 @@ MonoBehaviour:
   cooldown: 1
   bullet: {fileID: 3334476623477935023, guid: 41c1823992ae9c24cbb79b9234c6907b, type: 3}
   shootPoint: {fileID: 1958486083744207943}
-  fireButton: Fire1
   maxCurrRange: 0
---- !u!114 &1958486082547183769
+--- !u!114 &5257502039137238474
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -270,10 +271,32 @@ MonoBehaviour:
   m_GameObject: {fileID: 1958486082547183761}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8c8fa4c567df9f4db3aba46a7cd99ec, type: 3}
+  m_Script: {fileID: 11500000, guid: bc3858b233583214b9a52226cd326855, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  CurrentGasPower: 0
+  BrakePower: -6
+  GasLimit: 7
+  GasForce: 0.25
+  CurrentBrake: 0
+  RotationPower: 2
+--- !u!114 &180217418420483363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1958486082547183761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0385402f9e51924db5dfc611447e826, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldown: 0
+  cooldownTimer: 0
+  landmine: {fileID: 3883619574216135549, guid: 7fafec5dec0e6e5449b39d068187650c,
+    type: 3}
+  drop: {fileID: 5051909056264535226}
 --- !u!1 &1958486083035531708
 GameObject:
   m_ObjectHideFlags: 0
@@ -397,4 +420,34 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1958486082547183768}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: -30.036001, y: 180.00002, z: 0}
+--- !u!1 &7418066930638976369
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5051909056264535226}
+  m_Layer: 0
+  m_Name: MinePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5051909056264535226
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7418066930638976369}
+  m_LocalRotation: {x: 0.00000007278295, y: 0.965844, z: 0.25912446, w: 0.00000027128655}
+  m_LocalPosition: {x: 0.17000008, y: -0.09, z: 1.03}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1958486082547183768}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: -30.036001, y: 180.00002, z: 0}

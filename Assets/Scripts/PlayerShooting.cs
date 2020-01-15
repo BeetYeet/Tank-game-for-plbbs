@@ -15,7 +15,7 @@ public class PlayerShooting : MonoBehaviour
 
 	public GameObject bullet;
 	public Transform shootPoint;
-	public string fireButton = "Fire1";
+	string fireButton = "Fire_";
 
 	private bool debug = false;
 	public float maxCurrRange;
@@ -35,17 +35,17 @@ public class PlayerShooting : MonoBehaviour
 				currCooldown = 0f;
 			}
 		}
-		if (currCooldown == 0f && Input.GetButtonDown(fireButton))
+		if (currCooldown == 0f && Input.GetButtonDown(fireButton + gameObject.name))
 		{
 			currRange = startRange;
 		}
-		if (currCooldown == 0f && Input.GetButton(fireButton))
+		if (currCooldown == 0f && Input.GetButton(fireButton + gameObject.name))
 		{
 			currRange = currRange + rangeChargeUp * Time.deltaTime;
 			float _ = rangeChargeUp * rangeFactor;
 			currRange = Mathf.LerpUnclamped(currRange, _, Time.deltaTime);
 		}
-		if (currCooldown == 0f && Input.GetButtonUp(fireButton))
+		if (currCooldown == 0f && Input.GetButtonUp(fireButton + gameObject.name))
 		{
 			Fire();
 		}
