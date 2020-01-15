@@ -235,10 +235,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94120355ccb1b5e449dd8bc5c305ba31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  floatingTextPrefab: {fileID: 1410610967090868008, guid: 42c1be71e4ab632478041adf80f81687,
+    type: 3}
   objectHealth: 10
   sSource: {fileID: 0}
   hitSound1: {fileID: 8300000, guid: aec7f7dc2aa22ba4695bbf0140e9d3f4, type: 3}
   hitSound2: {fileID: 8300000, guid: af65a63efdf434a4dbacd58356085ed1, type: 3}
+  pickUpNumber: 0
+  pick: {fileID: 0}
+  move: {fileID: 0}
+  hurt: {fileID: 0}
+  health: {fileID: 0}
+  speedUp: 0
+  damageUp: 0
+  healthUp: 0
 --- !u!114 &1958486082547183775
 MonoBehaviour:
   m_ObjectHideFlags: 0
