@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1989759934470484366}
   m_Layer: 0
   m_Name: Pickup
-  m_TagString: Untagged
+  m_TagString: Pickup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -93,7 +93,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a04ba3665cdc7f84e99e21b75200dff2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  floatingTextPrefab: {fileID: 0}
   speedUp: 2
   damageUp: 5
   healthUp: 10
