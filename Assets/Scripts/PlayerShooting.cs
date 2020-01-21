@@ -12,11 +12,11 @@ public class PlayerShooting : MonoBehaviour
 	public float rangeChargeUp;
 	float currRange;
 	public float cooldown;
-	float currCooldown;
+	public float currCooldown;
 
 	public GameObject bullet;
 	public Transform shootPoint;
-	public string fireButton = "Fire1";
+	public const string fireButton = "Fire_";
 
 	private bool debug = false;
 	public float maxCurrRange;
@@ -26,9 +26,12 @@ public class PlayerShooting : MonoBehaviour
 	public TrailRenderer bulletPrediction;
 	public Light hitLight;
 
+
+	Rigidbody rb;
+
 	void Start()
 	{
-
+		rb = GetComponent<Rigidbody>();
 	}
 
 	List<Vector3> GetLandingPosition(Vector3 initialSpeed, Vector3 initialPosition)
@@ -83,21 +86,17 @@ public class PlayerShooting : MonoBehaviour
 			if (currCooldown < 0f)
 			{
 				currCooldown = 0f;
-				if (Input.GetButton(fireButton))
-				{
-					StartCharge();
-				}
 			}
 		}
-		if (currCooldown == 0f && Input.GetButtonDown(fireButton))
+		if (currCooldown == 0f && Input.GetButtonDown(fireButton + gameObject.name))
 		{
 			StartCharge();
 		}
-		if (currCooldown == 0f && Input.GetButton(fireButton))
+		if (currCooldown == 0f && Input.GetButton(fireButton + gameObject.name))
 		{
 			ContinueCharge();
 		}
-		if (currCooldown == 0f && Input.GetButtonUp(fireButton))
+		if (currCooldown == 0f && Input.GetButtonUp(fireButton + gameObject.name) && currRange > startRange)
 		{
 			EndCharge();
 		}
@@ -121,7 +120,7 @@ public class PlayerShooting : MonoBehaviour
 		float _ = rangeChargeUp * rangeFactor;
 		currRange = Mathf.LerpUnclamped(currRange, _, Time.deltaTime);
 
-		DisplayTrail(currRange * range);
+		DisplayTrail(currRange * range + rb.velocity.magnitude);
 	}
 
 	private void StartCharge()
@@ -147,7 +146,7 @@ public class PlayerShooting : MonoBehaviour
 	void Fire()
 	{
 		GameObject _ = Instantiate(bullet, shootPoint.position, shootPoint.rotation);
-		_.GetComponent<Rigidbody>().AddForce(shootPoint.forward * currRange * range, ForceMode.VelocityChange);
+		_.GetComponent<Rigidbody>().AddForce(shootPoint.forward * currRange * range + rb.velocity, ForceMode.VelocityChange);
 		_.GetComponent<BulletScript>().Initialize(bulletDamage);
 		currRange = 0f;
 		currCooldown = cooldown;
