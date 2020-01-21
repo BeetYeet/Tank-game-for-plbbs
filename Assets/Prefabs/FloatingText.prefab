@@ -81,7 +81,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1410610967090868008}
-  m_Text: The N-Word
+  m_Text: The N-word
   m_OffsetZ: 0
   m_CharacterSize: 0.3
   m_LineSpacing: 1
@@ -108,7 +108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroyTime: 3
-  offset: {x: 0, y: 1, z: 0}
+  offset: {x: 0.5, y: 1, z: 0.5}
 --- !u!95 &9135571213882429826
 Animator:
   serializedVersion: 3
