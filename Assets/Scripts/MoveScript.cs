@@ -6,72 +6,62 @@ using UnityEngine;
 public class MoveScript : MonoBehaviour
 {
 	Rigidbody Rbody;
-	public float CurrentGasPower;
-	public float BrakePower;
-	public float GasLimit;
-	public float GasForce;
-	public float CurrentBrake;
-	public float RotationPower;
 
-	[Range(0f,1f)] public float antiDriftFactor = 0.5f;
-	// Start is called before the first frame update
+	float gasForce;
+	public float gasIncrease = 2;
+	public float gasMax = 10;
+
+	public float linearBrakeForce = .5f;
+	public float constantBrakeForce = 1;
+
+	float reverseForce;
+	public float reverseIncrease = 3;
+	public float reverseMax = 5;
+
+	public float rotationPower;
+
+	[Range(0f, 1f)] public float antiDriftFactor = 0.5f;
+
 	void Start()
 	{
 		Rbody = GetComponent<Rigidbody>();
 	}
 	private void FixedUpdate()
 	{
-		Rbody.velocity -= Vector3.Project(Rbody.velocity, transform.right) * antiDriftFactor;
-	}
-	// Update is called once per frame
-	void Update()
-	{
-		Rotate();
-		Gas();
-		Brake();
-		Result();
-		if (CurrentGasPower > GasLimit)
-		{
-			CurrentGasPower = GasLimit;
-		}
-		if (CurrentGasPower < GasForce)
-		{
-			CurrentGasPower = GasForce;
-		}
-		CurrentGasPower -= GasForce;
-
-	}
 
 
-	private void Brake()
-	{
+		Vector3 forwardVelocity = Vector3.Project(Rbody.velocity, transform.forward);
 		if (Input.GetButton("Brake_" + gameObject.name))
 		{
-			CurrentBrake = BrakePower;
-		}
-		if (!Input.GetButton("Brake_" + gameObject.name))
-		{
-			CurrentBrake = 0;
-		}
-	}
+			if (forwardVelocity.magnitude > 0f)
+			{
 
-	private void Gas()
-	{
+				if (forwardVelocity.magnitude * linearBrakeForce + constantBrakeForce > forwardVelocity.magnitude)
+				{
+					Rbody.velocity -= forwardVelocity * linearBrakeForce + forwardVelocity.normalized * constantBrakeForce;
+				}
+				else
+				{
+					Rbody.velocity -= forwardVelocity;
+
+				}
+
+			}
+		}
+
+
 		if (Input.GetButton("Gas_" + gameObject.name))
 		{
-			CurrentGasPower += GasForce * 2;
+
 		}
 
+		Rbody.velocity -= Vector3.Project(Rbody.velocity, transform.right) * antiDriftFactor;
 	}
 
 	private void Rotate()
 	{
 
-		transform.Rotate(0, Input.GetAxisRaw("Horizontal_" + gameObject.name) * RotationPower, 0);
+		transform.Rotate(0, Input.GetAxisRaw("Horizontal_" + gameObject.name) * rotationPower, 0);
 
-	}
-	private void Result()
-	{
-		Rbody.AddRelativeForce(0, 0, CurrentGasPower + CurrentBrake);
 	}
 }

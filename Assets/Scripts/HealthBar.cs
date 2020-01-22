@@ -19,7 +19,6 @@ public class HealthBar : MonoBehaviour
 		localScale.x = scaleFactor * hpScript.health / hpScript.maxHealth;
 		transform.localScale = localScale;
 		float _ = hpScript.health / (float)hpScript.maxHealth;
-		Debug.Log(_);
 		transform.localPosition = -Vector3.right * _;
 	}
 	public void StartAnimation()

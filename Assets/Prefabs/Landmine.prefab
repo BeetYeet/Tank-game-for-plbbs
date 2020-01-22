@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1669474246}
   - component: {fileID: 1669474248}
   - component: {fileID: 1669474247}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65,7 +65,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: a13288195ad31c74480e8c30a8952010, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d45c3b362758b9847a689af2135bb8b2, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 1942089323}
   - component: {fileID: 1942089322}
   - component: {fileID: 1942089321}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -188,7 +188,7 @@ GameObject:
   - component: {fileID: 3883619574216135491}
   - component: {fileID: 8969861145015594965}
   - component: {fileID: 6774112071309302051}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Landmine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -285,8 +285,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
-  timer: 5
-  timerImage: {fileID: 0}
+  timer: 3
+  timerImage: {fileID: 1669474247}
+  Explosion: {fileID: 8461784997414014446, guid: 8af4798e2c8335a40a2a633e477b08c9,
+    type: 3}
 --- !u!64 &6774112071309302051
 MeshCollider:
   m_ObjectHideFlags: 0
