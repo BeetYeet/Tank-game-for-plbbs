@@ -28,7 +28,7 @@ public class MineDrop : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.K) && cooldownTimer == 0)
+        if (Input.GetButtonDown("Mine_" + gameObject.name) && cooldownTimer == 0)
         {
             Instantiate(landmine, drop.position, drop.rotation);
             cooldownTimer = cooldown;
