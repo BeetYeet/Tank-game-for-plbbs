@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3883619574216135491}
   - component: {fileID: 8969861145015594965}
   - component: {fileID: 6774112071309302051}
+  - component: {fileID: 1563921713184524750}
   m_Layer: 9
   m_Name: Landmine
   m_TagString: Untagged
@@ -111,6 +112,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 10
   timer: 5
+  Explosion: {fileID: 8461784997414014446, guid: 8af4798e2c8335a40a2a633e477b08c9,
+    type: 3}
 --- !u!64 &6774112071309302051
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -125,3 +128,16 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!135 &1563921713184524750
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3883619574216135549}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.67
+  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
