@@ -417,6 +417,11 @@ PrefabInstance:
       propertyPath: RotationPower
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1958486082547183774, guid: f546485ca8c4a23438c92441b553060a,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f546485ca8c4a23438c92441b553060a, type: 3}
 --- !u!1 &485965464 stripped
@@ -1523,7 +1528,7 @@ PrefabInstance:
     - target: {fileID: 1958486082547183768, guid: f546485ca8c4a23438c92441b553060a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.821786
+      value: 4.88
       objectReference: {fileID: 0}
     - target: {fileID: 1958486082547183768, guid: f546485ca8c4a23438c92441b553060a,
         type: 3}
@@ -1625,6 +1630,11 @@ PrefabInstance:
         type: 3}
       propertyPath: RotationPower
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1958486082547183774, guid: f546485ca8c4a23438c92441b553060a,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f546485ca8c4a23438c92441b553060a, type: 3}
