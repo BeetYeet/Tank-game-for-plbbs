@@ -7,13 +7,16 @@ public class Landmine : MonoBehaviour
     public int damage;
 
     public float timer;
+	float timerMax;
+
+	public UnityEngine.UI.Image timerImage;
 
 
 
     // Start is called before the first frame update
     void Start()
     {
-
+		timerMax = timer;
     }
 
     // Update is called once per frame
@@ -26,7 +29,9 @@ public class Landmine : MonoBehaviour
             if (timer < 0f)
             {
                 timer = 0f;
+				Destroy(timerImage.canvas.gameObject);
             }
+			timerImage.fillAmount = timer / timerMax;
         }
         else
         {
