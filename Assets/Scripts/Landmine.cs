@@ -11,6 +11,7 @@ public class Landmine : MonoBehaviour
 
 	public UnityEngine.UI.Image timerImage;
 
+    public GameObject Explosion;
 
 
     // Start is called before the first frame update
@@ -33,17 +34,18 @@ public class Landmine : MonoBehaviour
             }
 			timerImage.fillAmount = timer / timerMax;
         }
-        else
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (timer == 0f)
         {
-            Ray ray = new Ray(transform.position, Vector3.up);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, 2f))
+            if (other.gameObject.tag == "Player")
             {
-                if (hit.collider.gameObject.tag == "Player")
-                {
-                    Destroy(gameObject);
-                    hit.collider.gameObject.GetComponent<Health>().DoDamage(damage);
-                }
+                Instantiate(Explosion, gameObject.transform.position, gameObject.transform.rotation);
+                Destroy(gameObject);
+                other.gameObject.GetComponent<Health>().DoDamage(damage);
+                
             }
         }
     }
