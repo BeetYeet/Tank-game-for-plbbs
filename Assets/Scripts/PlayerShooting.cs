@@ -120,7 +120,7 @@ public class PlayerShooting : MonoBehaviour
 		float _ = rangeChargeUp * rangeFactor;
 		currRange = Mathf.LerpUnclamped(currRange, _, Time.deltaTime);
 
-		DisplayTrail(currRange * range + rb.velocity.magnitude);
+		DisplayTrail(currRange * range);
 	}
 
 	private void StartCharge()
@@ -133,7 +133,7 @@ public class PlayerShooting : MonoBehaviour
 
 	private void DisplayTrail(float velocity)
 	{
-		List<Vector3> path = GetLandingPosition(velocity * shootPoint.forward, shootPoint.position);
+		List<Vector3> path = GetLandingPosition(velocity * shootPoint.forward + rb.velocity, shootPoint.position);
 		Vector3 _ = path[path.Count - 1];
 		hitLight.transform.position = new Vector3(_.x, _.y + markerHeightAboveGround, _.z);
 

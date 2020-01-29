@@ -7,16 +7,13 @@ public class MoveScript : MonoBehaviour
 {
 	Rigidbody Rbody;
 
-	float gasForce;
-	public float gasIncrease = 2;
-	public float gasMax = 10;
+	public float gasForce;
+	public float gasFalloff;
 
-	public float linearBrakeForce = .5f;
-	public float constantBrakeForce = 1;
 
-	float reverseForce;
-	public float reverseIncrease = 3;
-	public float reverseMax = 5;
+	public float reverseForce;
+	public float reverseFalloff;
+
 
 	public float rotationPower;
 
@@ -30,38 +27,27 @@ public class MoveScript : MonoBehaviour
 	{
 
 
+		transform.Rotate(0, Input.GetAxisRaw("Horizontal_" + gameObject.name) * rotationPower, 0);
+
+
 		Vector3 forwardVelocity = Vector3.Project(Rbody.velocity, transform.forward);
+		Debug.DrawRay(transform.position, forwardVelocity);
 		if (Input.GetButton("Brake_" + gameObject.name))
 		{
-			if (forwardVelocity.magnitude > 0f)
-			{
-
-				if (forwardVelocity.magnitude * linearBrakeForce + constantBrakeForce > forwardVelocity.magnitude)
-				{
-					Rbody.velocity -= forwardVelocity * linearBrakeForce + forwardVelocity.normalized * constantBrakeForce;
-				}
-				else
-				{
-					Rbody.velocity -= forwardVelocity;
-
-				}
-
-			}
+			Rbody.AddForce(-transform.forward * Time.fixedDeltaTime * (reverseForce - Rbody.velocity.magnitude * gasFalloff), ForceMode.VelocityChange);
 		}
-
 
 		if (Input.GetButton("Gas_" + gameObject.name))
 		{
-
+			Rbody.AddForce(transform.forward * Time.fixedDeltaTime * (gasForce - Rbody.velocity.magnitude * reverseFalloff), ForceMode.VelocityChange);
 		}
 
-		Rbody.velocity -= Vector3.Project(Rbody.velocity, transform.right) * antiDriftFactor;
-	}
 
-	private void Rotate()
-	{
 
-		transform.Rotate(0, Input.GetAxisRaw("Horizontal_" + gameObject.name) * rotationPower, 0);
+		Vector3 sidewardVelocity = Vector3.Project(Rbody.velocity, transform.right);
+		Rbody.velocity -= sidewardVelocity * antiDriftFactor;
+		Debug.DrawRay(transform.position, sidewardVelocity * (1 - antiDriftFactor));
+
 
 	}
 }

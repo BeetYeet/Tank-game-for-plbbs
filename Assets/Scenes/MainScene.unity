@@ -695,15 +695,6 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 1687258585}
-    - target: {fileID: 717287820, guid: f546485ca8c4a23438c92441b553060a, type: 3}
-      propertyPath: BrakePower
-      value: -7
-      objectReference: {fileID: 0}
-    - target: {fileID: 5856032863126677557, guid: f546485ca8c4a23438c92441b553060a,
-        type: 3}
-      propertyPath: cooldown
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f546485ca8c4a23438c92441b553060a, type: 3}
 --- !u!1 &1687258581
