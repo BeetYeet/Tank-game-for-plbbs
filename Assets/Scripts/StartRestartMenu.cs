@@ -2,24 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using TMPro;
 public class StartRestartMenu : MonoBehaviour
 {
     public GameObject player1;
     public GameObject player2;
     public GameObject restartCanvas;
-
+    public TextMeshProUGUI gamoverText;
+    public string victoryString;
     private void Start()
     {
         restartCanvas = GameObject.Find("EndGameMenu");
-        player1 = GameObject.Find("Player 1");
-        player2 = GameObject.Find("Player 2");
+        if (player1 == null || player2 == null)
+        {
+            Debug.LogError("PlayerObjects Not Assigned");
+        }
     }
-
     void Update()
-    { 
+    {
         // fixar en najs win animations och så
-        if(player1 == null || player2 == null|| Input.GetKeyDown(KeyCode.Escape))
+        if (player1 == null || player2 == null || Input.GetKeyDown(KeyCode.Escape))
         {
             restartCanvas.SetActive(true);
             Time.timeScale = 0.1f;
@@ -28,6 +30,16 @@ public class StartRestartMenu : MonoBehaviour
         {
             Time.timeScale = 1f;
             restartCanvas.SetActive(false);
+        }
+        if (player1 == null)
+        {
+            victoryString = "Player 2 wins";
+            gamoverText.text = victoryString.ToString();
+        }
+        if (player2 == null)
+        {
+            victoryString = "Player 1 wins";
+            gamoverText.text = victoryString.ToString();
         }
     }
 }

@@ -5,14 +5,13 @@ using UnityEngine;
 
 public class MainMenuGoBack : MonoBehaviour
 {
-
     public void GoBack()
     {
         SceneManager.LoadScene("MainMenuScene");
     }
     public void Restart()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
 }
