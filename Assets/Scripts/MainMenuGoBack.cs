@@ -11,7 +11,7 @@ public class MainMenuGoBack : MonoBehaviour
     }
     public void Restart()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
 }

@@ -36,7 +36,7 @@ public class MainMenuScript : MonoBehaviour
     public void LoadMap()
     {
         //SoundManager.instance.PlaySingle(selectionSound);
-        //SceneManager.LoadScene(1);
+        SceneManager.LoadScene(3);
         change = true;
     }
     public void LoadCredits()
