@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 1958486081979993175}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 10, y: 1, z: 1}
+  m_LocalScale: {x: 30, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 1958486082547183768}
   m_RootOrder: 1
@@ -109,7 +109,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b678cd279fb61ff42849043ea3bec91d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
 --- !u!95 &1045565734
 Animator:
   serializedVersion: 3
@@ -323,12 +322,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc3858b233583214b9a52226cd326855, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentGasPower: 0
-  BrakePower: -3
-  GasLimit: 5
-  GasForce: 7
-  CurrentBrake: 0
-  RotationPower: 2
+  gasIncrease: 2
+  gasMax: 10
+  linearBrakeForce: 0.5
+  constantBrakeForce: 1
+  reverseIncrease: 3
+  reverseMax: 5
+  rotationPower: 0
   antiDriftFactor: 0.03
 --- !u!114 &5856032863126677557
 MonoBehaviour:
@@ -374,7 +374,7 @@ Transform:
   m_GameObject: {fileID: 1958486083035531708}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 10, y: 1, z: 1}
+  m_LocalScale: {x: 30, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 1958486082547183768}
   m_RootOrder: 0
@@ -440,7 +440,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b678cd279fb61ff42849043ea3bec91d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
 --- !u!1 &1958486083744207942
 GameObject:
   m_ObjectHideFlags: 0
