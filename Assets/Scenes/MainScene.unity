@@ -349,31 +349,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1958486082547183775, guid: f546485ca8c4a23438c92441b553060a,
-        type: 3}
-      propertyPath: groundPlane
-      value: 
-      objectReference: {fileID: 688279466}
-    - target: {fileID: 1958486082547183775, guid: f546485ca8c4a23438c92441b553060a,
-        type: 3}
-      propertyPath: hitLight
-      value: 
-      objectReference: {fileID: 619087180}
-    - target: {fileID: 1958486081979993171, guid: f546485ca8c4a23438c92441b553060a,
-        type: 3}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 1687258585}
-    - target: {fileID: 1958486083035531706, guid: f546485ca8c4a23438c92441b553060a,
-        type: 3}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 1687258585}
-    - target: {fileID: 1958486082547183770, guid: f546485ca8c4a23438c92441b553060a,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 7e1c2877e9bf3c641998c7dddec28526, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f546485ca8c4a23438c92441b553060a, type: 3}
 --- !u!1 &619087179
