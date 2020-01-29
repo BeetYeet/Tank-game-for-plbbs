@@ -30,6 +30,7 @@ public class MineDrop : MonoBehaviour
 
         if (Input.GetButtonDown("Mine_" + gameObject.name) && cooldownTimer == 0)
         {
+			Debug.Log("Placed Mine");
             Instantiate(landmine, drop.position, drop.rotation);
             cooldownTimer = cooldown;
         }
