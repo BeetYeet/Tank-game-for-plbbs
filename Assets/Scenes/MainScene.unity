@@ -685,16 +685,6 @@ PrefabInstance:
       propertyPath: hitLight
       value: 
       objectReference: {fileID: 619087180}
-    - target: {fileID: 1958486081979993171, guid: f546485ca8c4a23438c92441b553060a,
-        type: 3}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 1687258585}
-    - target: {fileID: 1958486083035531706, guid: f546485ca8c4a23438c92441b553060a,
-        type: 3}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 1687258585}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f546485ca8c4a23438c92441b553060a, type: 3}
 --- !u!1 &1687258581

@@ -139,6 +139,7 @@ GameObject:
   - component: {fileID: 6496337811347507796}
   - component: {fileID: 717287820}
   - component: {fileID: 5856032863126677557}
+  - component: {fileID: 5470102787757192413}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -314,14 +315,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc3858b233583214b9a52226cd326855, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gasIncrease: 2
-  gasMax: 10
-  linearBrakeForce: 0.5
-  constantBrakeForce: 1
-  reverseIncrease: 3
-  reverseMax: 5
-  rotationPower: 0
-  antiDriftFactor: 0.03
+  gasForce: 35
+  gasFalloff: 3
+  reverseForce: 25
+  reverseFalloff: 2
+  rotationPower: 2.5
+  antiDriftFactor: 0.049
 --- !u!114 &5856032863126677557
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -339,6 +338,22 @@ MonoBehaviour:
   landmine: {fileID: 3883619574216135549, guid: 7fafec5dec0e6e5449b39d068187650c,
     type: 3}
   drop: {fileID: 3328658049255336884}
+--- !u!114 &5470102787757192413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1958486082547183761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fa3cf39322cb8f4ebf7c144f600afd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerColor: {r: 0.9098039, g: 0.18039212, b: 0.98431367, a: 1}
+  damagecolor: {r: 1, g: 1, b: 1, a: 1}
+  mr: {fileID: 0}
+  materialIndex: 0
 --- !u!1 &1958486083035531708
 GameObject:
   m_ObjectHideFlags: 0
