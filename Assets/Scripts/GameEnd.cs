@@ -22,12 +22,15 @@ public class GameEnd : MonoBehaviour
         {
             player1 = GameObject.Find("Player1");
             victoryText.text = "player 1 wins";
+            Debug.Log("Player object not assigned, please assign player object. If object got destroyed, ignore this message");
         }
         if(player2 == null)
         {
             player2 = GameObject.Find("Player2");
             victoryText.text = "Player 2 Wins";
+            Debug.Log("Player object not assigned, please assign player object. If object got destroyed, ignore this message");
         }
+        
     }
 
     void Update()

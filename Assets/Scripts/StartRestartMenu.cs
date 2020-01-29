@@ -8,18 +8,19 @@ public class StartRestartMenu : MonoBehaviour
     public GameObject player1;
     public GameObject player2;
     public GameObject restartCanvas;
+    public bool tempbool;
 
     private void Start()
     {
         restartCanvas = GameObject.Find("EndGameMenu");
-        player1 = GameObject.Find("Player 1");
-        player2 = GameObject.Find("Player 2");
+            player1 = GameObject.Find("Player 1");
+            player2 = GameObject.Find("Player 2");
     }
 
     void Update()
-    { 
+    {
         // fixar en najs win animations och så
-        if(player1 == null || player2 == null|| Input.GetKeyDown(KeyCode.Escape))
+        if (player1 == null || player2 == null || Input.GetKeyDown(KeyCode.Escape))
         {
             restartCanvas.SetActive(true);
             Time.timeScale = 0.1f;
