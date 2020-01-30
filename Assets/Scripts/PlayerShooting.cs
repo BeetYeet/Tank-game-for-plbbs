@@ -5,22 +5,30 @@ using UnityEngine;
 
 public class PlayerShooting : MonoBehaviour
 {
+	[Header("Bullet Stats")]
 	public int bulletDamage;
+	public AnimationCurve bulletDamageFalloff;
+	public float bulletExplosionRadius;
+	public GameObject bullet;
+
+	[Header("Shooting")]
+	float currRange;
 	public float startRange;
 	public float range;
 	public float rangeFactor;
 	public float rangeChargeUp;
-	float currRange;
-	public float cooldown;
-	public float currCooldown;
-
-	public GameObject bullet;
 	public Transform shootPoint;
 	public const string fireButton = "Fire_";
 
+	[Header("Cooldown")]
+	public float cooldown;
+	public float currCooldown;
+
+	[Header("Debug")]
 	private bool debug = false;
 	public float maxCurrRange;
 
+	[Header("Bullet Prediction")]
 	public GameObject groundPlane;
 	float markerHeightAboveGround = .1f;
 	public TrailRenderer bulletPrediction;
@@ -86,6 +94,10 @@ public class PlayerShooting : MonoBehaviour
 			if (currCooldown < 0f)
 			{
 				currCooldown = 0f;
+				if (Input.GetButton(fireButton + gameObject.name))
+				{
+					StartCharge();
+				}
 			}
 		}
 		if (currCooldown == 0f && Input.GetButtonDown(fireButton + gameObject.name))
@@ -147,7 +159,7 @@ public class PlayerShooting : MonoBehaviour
 	{
 		GameObject _ = Instantiate(bullet, shootPoint.position, shootPoint.rotation);
 		_.GetComponent<Rigidbody>().AddForce(shootPoint.forward * currRange * range + rb.velocity, ForceMode.VelocityChange);
-		_.GetComponent<BulletScript>().Initialize(bulletDamage);
+		_.GetComponent<BulletScript>().Initialize(bulletDamage, bulletExplosionRadius, bulletDamageFalloff);
 		currRange = 0f;
 		currCooldown = cooldown;
 	}
