@@ -18,14 +18,14 @@ public class Health : MonoBehaviour
 	public GameObject floatingTextPrefab;
 
 	//Refrencing the scripts
-	public MovementTest move;
+	public MoveScript move;
 	public PlayerShooting hurt;
 
 
 	private void Start()
 	{
 		//SoundManager.instance.RandomizeSfx(hitSound1, hitSound2);
-		move = GameObject.FindObjectOfType<MovementTest>();
+		move = GameObject.FindObjectOfType<MoveScript>();
 		hurt = GameObject.FindObjectOfType<PlayerShooting>();
 	}
 
@@ -39,6 +39,10 @@ public class Health : MonoBehaviour
 		{
 			SoundManager.instance.RandomizeSfx(hitSound1, hitSound2);
 		}
+        if (health > maxHealth)
+        {
+            health = maxHealth;
+        }
 	}
 
 	public void DoDamage(int damage)
@@ -95,7 +99,7 @@ public class Health : MonoBehaviour
 	}
 	void Speed() //Increases Speed
 	{
-		move.moveSpeed += speedUp;
+		move.gasForce += speedUp;
 		Debug.Log("SpeedUp active");
 	}
 
