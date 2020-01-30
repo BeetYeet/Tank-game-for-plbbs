@@ -11,13 +11,14 @@ public class PlayerShooting : MonoBehaviour
 	public GameObject bullet;
 
 	[Header("Shooting")]
-	float currRange;
 	public float startRange;
 	public float range;
 	public float rangeFactor;
 	public float rangeChargeUp;
+	float currRange;
 	public Transform shootPoint;
 	public const string fireButton = "Fire_";
+	public AudioSource shootSound;
 
 	[Header("Cooldown")]
 	public float cooldown;
@@ -41,7 +42,8 @@ public class PlayerShooting : MonoBehaviour
 		rb = GetComponent<Rigidbody>();
 	}
 
-	void OnDrawGizmos(){
+	void OnDrawGizmos()
+	{
 		BulletScript.TriggerGizmos();
 	}
 
@@ -165,5 +167,6 @@ public class PlayerShooting : MonoBehaviour
 		_.GetComponent<BulletScript>().Initialize(bulletDamage, bulletExplosionRadius);
 		currRange = 0f;
 		currCooldown = cooldown;
+		shootSound.Play();
 	}
 }

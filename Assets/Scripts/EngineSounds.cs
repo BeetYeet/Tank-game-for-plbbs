@@ -9,6 +9,8 @@ public class EngineSounds : MonoBehaviour
 	public MoveScript move;
 	public Rigidbody rb;
 	float maxVel = 13f;
+	[Range(0f, 1f)]
+	public float volume = 1f;
 
 	float GetEnginePower()
 	{
@@ -23,7 +25,7 @@ public class EngineSounds : MonoBehaviour
 	void Update()
 	{
 		float power = GetEnginePower();
-		idleSound.volume = (1f - power) * 0.6f + 0.1f;
-		runningSound.volume = power * 0.6f + 0.1f;
+		idleSound.volume = ((1f - power) * 0.6f + 0.1f) * volume;
+		runningSound.volume = (power * 0.6f + 0.1f) * volume;
 	}
 }
