@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerShooting : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class PlayerShooting : MonoBehaviour
 	public const string fireButton = "Fire_";
 	public AudioSource shootSound;
 	public List<ParticleSystem> particles = new List<ParticleSystem>();
+	public Image cooldownTimer;
 
 	[Header("Cooldown")]
 	public float cooldown;
@@ -123,6 +125,8 @@ public class PlayerShooting : MonoBehaviour
 			if (currRange < maxCurrRange)
 				maxCurrRange = currRange;
 		}
+
+		cooldownTimer.fillAmount = (currCooldown / cooldown);
 	}
 
 	private void EndCharge()

@@ -1,38 +1,43 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MineDrop : MonoBehaviour
 {
-    public float cooldown;
-    float cooldownTimer;
+	public float cooldown;
+	float cooldownTimer;
 
-    public GameObject landmine;
-    public Transform drop;
+	public GameObject landmine;
+	public Transform drop;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+	public Image mineCooldownImage;
 
-    // Update is called once per frame
-    void Update()
-    {
-        if(cooldownTimer > 0)
-        {
-            cooldownTimer -= Time.deltaTime;
-            if(cooldownTimer <= 0)
-            {
-                cooldownTimer = 0;
-            }
-        }
+	// Start is called before the first frame update
+	void Start()
+	{
 
-        if (Input.GetButtonDown("Mine_" + gameObject.name) && cooldownTimer == 0)
-        {
+	}
+
+	// Update is called once per frame
+	void Update()
+	{
+		if (cooldownTimer > 0)
+		{
+			cooldownTimer -= Time.deltaTime;
+			if (cooldownTimer <= 0)
+			{
+				cooldownTimer = 0;
+			}
+		}
+
+		if (Input.GetButtonDown("Mine_" + gameObject.name) && cooldownTimer == 0)
+		{
 			Debug.Log("Placed Mine");
-            Instantiate(landmine, drop.position, drop.rotation);
-            cooldownTimer = cooldown;
-        }
-    }
+			Instantiate(landmine, drop.position, drop.rotation);
+			cooldownTimer = cooldown;
+		}
+
+		mineCooldownImage.fillAmount = cooldownTimer / cooldown;
+	}
 }
