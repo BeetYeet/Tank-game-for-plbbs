@@ -5,7 +5,7 @@ using UnityEngine;
 public class MineDrop : MonoBehaviour
 {
     public float cooldown;
-    public float cooldownTimer;
+    float cooldownTimer;
 
     public GameObject landmine;
     public Transform drop;

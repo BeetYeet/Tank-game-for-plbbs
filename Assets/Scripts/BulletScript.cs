@@ -8,20 +8,57 @@ public class BulletScript : MonoBehaviour
 	public Rigidbody rb;
 	int damage;
 	float explosionRadius;
-	AnimationCurve falloff;
 	public GameObject hitEffect;
 	public SoundManager sm;
 	public AudioClip hitSound;
+
+	static List<DebugSphere> debugSpheres = new List<DebugSphere>();
+	static float lastGizmoDraw = 0;
+
+	private static void DrawGizmos()
+	{
+		lastGizmoDraw = Time.time;
+		List<DebugSphere> _ = new List<DebugSphere>();
+		debugSpheres.ForEach(x =>
+		{
+			if (x.decayTime < Time.time)
+			{
+				_.Add(x);
+				Debug.Log("Sphere dacay");
+			}
+			else
+			{
+				Debug.Log("Drew Sphere!");
+				Gizmos.color = x.color * new Vector4(1f, 1f, 1f, 0.4f);
+				Gizmos.DrawSphere(x.pos, x.radius);
+			}
+		});
+
+		_.ForEach(x =>
+		{
+			debugSpheres.Remove(x);
+		});
+
+	}
+
+	public static void TriggerGizmos()
+	{
+		if (lastGizmoDraw < Time.time)
+		{
+			DrawGizmos();
+			Debug.Log("Drew gizmos!");
+		}
+	}
+
 	private void Start()
 	{
 		sm = GetComponent<SoundManager>();
 	}
 
-	public void Initialize(int damage, float explosionRadius, AnimationCurve falloff)
+	public void Initialize(int damage, float explosionRadius)
 	{
 		this.damage = damage;
 		this.explosionRadius = explosionRadius;
-		this.falloff = falloff;
 	}
 
 	private void Update()
@@ -39,27 +76,10 @@ public class BulletScript : MonoBehaviour
 		}
 		else
 		{
-			List<GameObject> objectsInRange = new List<GameObject>();
-			Physics.OverlapSphere(transform.position, explosionRadius).ToList().ForEach(
-			x =>
-			{
-				if (!objectsInRange.Contains(x.transform.root.gameObject))
-				{
-					objectsInRange.Add(x.transform.root.gameObject);
-				}
-			});
-
-			foreach (GameObject go in objectsInRange)
-			{
-				hitHealth = go.GetComponent<Health>();
-				if (hitHealth != null)
-				{
-					float distance = Mathf.Clamp01(1 - (transform.position - go.transform.position).magnitude / explosionRadius);
-					float thisDamage = falloff.Evaluate(distance) * 0.8f * damage;
-					hitHealth.DoDamage(Mathf.RoundToInt(thisDamage));
-					Debug.Log("Hit other player indirectly for " + thisDamage + " damage!\n(distance of " + (transform.position - go.transform.position).magnitude + " standing for a part of the radius equal to " + (transform.position - go.transform.position).magnitude / explosionRadius + " and a portion of damage equal to" + falloff.Evaluate(distance) * 0.8f + ")");
-				}
-			}
+			Explode(explosionRadius, damage);
+			Explode(explosionRadius / 2f, damage);
+			Explode(explosionRadius / 4f, damage);
+			Explode(explosionRadius / 8f, damage);
 		}
 		Destroy(gameObject);
 		Instantiate(hitEffect, transform.position, transform.rotation);
@@ -70,5 +90,46 @@ public class BulletScript : MonoBehaviour
 		else
 			SoundManager.instance.PlaySingle(hitSound);
 
+	}
+
+	private void Explode(float radius, float thisDamage)
+	{
+		List<GameObject> objectsInRange = new List<GameObject>();
+		debugSpheres.Add(new DebugSphere(transform.position, radius, Color.red, Time.time + 3f));
+		Physics.OverlapSphere(transform.position, radius).ToList().ForEach(
+		x =>
+		{
+			if (!objectsInRange.Contains(x.transform.root.gameObject))
+			{
+				objectsInRange.Add(x.transform.root.gameObject);
+			}
+		});
+
+		foreach (GameObject go in objectsInRange)
+		{
+			Health hitHealth;
+			hitHealth = go.GetComponent<Health>();
+			if (hitHealth != null)
+			{
+				hitHealth.DoDamage(Mathf.RoundToInt(thisDamage));
+				Debug.Log("Hit other player indirectly for " + Mathf.RoundToInt(thisDamage));
+			}
+		}
+	}
+
+	struct DebugSphere
+	{
+		public Vector3 pos;
+		public float radius;
+		public Color color;
+		public float decayTime;
+
+		public DebugSphere(Vector3 pos, float radius, Color color, float decayTime)
+		{
+			this.pos = pos;
+			this.radius = radius;
+			this.color = color;
+			this.decayTime = decayTime;
+		}
 	}
 }

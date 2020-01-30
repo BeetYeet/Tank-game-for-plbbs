@@ -264,41 +264,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb499824cee0439489ff19440b96f73c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletDamage: 30
-  bulletDamageFalloff:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.4
-      value: 1
-      inSlope: -0
-      outSlope: -1.3333333
-      tangentMode: 69
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0.2
-      inSlope: -1.3333333
-      outSlope: -1.3333333
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  bulletExplosionRadius: 5
+  bulletDamage: 10
+  bulletExplosionRadius: 7
   bullet: {fileID: 3334476623477935023, guid: 41c1823992ae9c24cbb79b9234c6907b, type: 3}
   startRange: 0.7
   range: 5
@@ -368,7 +335,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldown: 0
-  cooldownTimer: 0
   landmine: {fileID: 3883619574216135549, guid: 7fafec5dec0e6e5449b39d068187650c,
     type: 3}
   drop: {fileID: 3328658049255336884}

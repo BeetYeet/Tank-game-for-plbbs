@@ -7,7 +7,6 @@ public class PlayerShooting : MonoBehaviour
 {
 	[Header("Bullet Stats")]
 	public int bulletDamage;
-	public AnimationCurve bulletDamageFalloff;
 	public float bulletExplosionRadius;
 	public GameObject bullet;
 
@@ -40,6 +39,10 @@ public class PlayerShooting : MonoBehaviour
 	void Start()
 	{
 		rb = GetComponent<Rigidbody>();
+	}
+
+	void OnDrawGizmos(){
+		BulletScript.TriggerGizmos();
 	}
 
 	List<Vector3> GetLandingPosition(Vector3 initialSpeed, Vector3 initialPosition)
@@ -159,7 +162,7 @@ public class PlayerShooting : MonoBehaviour
 	{
 		GameObject _ = Instantiate(bullet, shootPoint.position, shootPoint.rotation);
 		_.GetComponent<Rigidbody>().AddForce(shootPoint.forward * currRange * range + rb.velocity, ForceMode.VelocityChange);
-		_.GetComponent<BulletScript>().Initialize(bulletDamage, bulletExplosionRadius, bulletDamageFalloff);
+		_.GetComponent<BulletScript>().Initialize(bulletDamage, bulletExplosionRadius);
 		currRange = 0f;
 		currCooldown = cooldown;
 	}
