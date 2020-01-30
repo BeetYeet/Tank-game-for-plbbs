@@ -24,11 +24,11 @@ public class BulletScript : MonoBehaviour
 			if (x.decayTime < Time.time)
 			{
 				_.Add(x);
-				Debug.Log("Sphere dacay");
+				//Debug.Log("Sphere dacay");
 			}
 			else
 			{
-				Debug.Log("Drew Sphere!");
+				//Debug.Log("Drew Sphere!");
 				Gizmos.color = x.color * new Vector4(1f, 1f, 1f, 0.4f);
 				Gizmos.DrawSphere(x.pos, x.radius);
 			}
@@ -46,7 +46,7 @@ public class BulletScript : MonoBehaviour
 		if (lastGizmoDraw < Time.time)
 		{
 			DrawGizmos();
-			Debug.Log("Drew gizmos!");
+			//Debug.Log("Drew gizmos!");
 		}
 	}
 
@@ -71,15 +71,21 @@ public class BulletScript : MonoBehaviour
 		Health hitHealth = collision.gameObject.GetComponent<Health>();
 		if (hitHealth != null)
 		{
-			hitHealth.DoDamage(damage);
-			Debug.Log("Hit other player directly for " + damage + " damage!");
+			hitHealth.DoDamage(damage * 5);
+			Debug.Log("Hit other player directly for " + damage * 5 + " damage!");
 		}
 		else
 		{
-			Explode(explosionRadius, damage);
-			Explode(explosionRadius / 2f, damage);
-			Explode(explosionRadius / 4f, damage);
-			Explode(explosionRadius / 8f, damage);
+			int hits = 0;
+			for (int i = 0; i < 4; i++)
+			{
+				if (Explode(explosionRadius / Mathf.Pow(2f, i), damage))
+				{
+					hits++;
+				}
+			}
+			if (hits != 0)
+				Debug.Log("Hit other player indirectly for " + damage * hits);
 		}
 		Destroy(gameObject);
 		Instantiate(hitEffect, transform.position, transform.rotation);
@@ -92,7 +98,7 @@ public class BulletScript : MonoBehaviour
 
 	}
 
-	private void Explode(float radius, float thisDamage)
+	private bool Explode(float radius, float thisDamage)
 	{
 		List<GameObject> objectsInRange = new List<GameObject>();
 		debugSpheres.Add(new DebugSphere(transform.position, radius, Color.red, Time.time + 3f));
@@ -104,7 +110,7 @@ public class BulletScript : MonoBehaviour
 				objectsInRange.Add(x.transform.root.gameObject);
 			}
 		});
-
+		bool hit = false;
 		foreach (GameObject go in objectsInRange)
 		{
 			Health hitHealth;
@@ -112,9 +118,10 @@ public class BulletScript : MonoBehaviour
 			if (hitHealth != null)
 			{
 				hitHealth.DoDamage(Mathf.RoundToInt(thisDamage));
-				Debug.Log("Hit other player indirectly for " + Mathf.RoundToInt(thisDamage));
+				hit = true;
 			}
 		}
+		return hit;
 	}
 
 	struct DebugSphere
