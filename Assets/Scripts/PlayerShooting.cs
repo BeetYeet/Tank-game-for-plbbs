@@ -19,6 +19,7 @@ public class PlayerShooting : MonoBehaviour
 	public Transform shootPoint;
 	public const string fireButton = "Fire_";
 	public AudioSource shootSound;
+	public List<ParticleSystem> particles = new List<ParticleSystem>();
 
 	[Header("Cooldown")]
 	public float cooldown;
@@ -168,5 +169,6 @@ public class PlayerShooting : MonoBehaviour
 		currRange = 0f;
 		currCooldown = cooldown;
 		shootSound.Play();
+		particles.ForEach(x => { x.Play(); });
 	}
 }
