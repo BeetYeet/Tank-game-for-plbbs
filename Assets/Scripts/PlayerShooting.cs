@@ -22,6 +22,11 @@ public class PlayerShooting : MonoBehaviour
 	public AudioSource shootSound;
 	public List<ParticleSystem> particles = new List<ParticleSystem>();
 	public Image cooldownTimer;
+	public Light shootLight;
+	public float shootLightIntensity = 15f;
+	public float shootLightDecay = 5f;
+	public float knockbackForce = 5f;
+	public float knockbackTorque = 5f;
 
 	[Header("Cooldown")]
 	public float cooldown;
@@ -36,6 +41,7 @@ public class PlayerShooting : MonoBehaviour
 	float markerHeightAboveGround = .1f;
 	public TrailRenderer bulletPrediction;
 	public Light hitLight;
+
 
 
 	Rigidbody rb;
@@ -96,6 +102,7 @@ public class PlayerShooting : MonoBehaviour
 
 	void Update()
 	{
+		shootLight.intensity -= Time.deltaTime * shootLightDecay;
 		if (currCooldown > 0f)
 		{
 			currCooldown -= Time.deltaTime;
@@ -170,6 +177,9 @@ public class PlayerShooting : MonoBehaviour
 		GameObject _ = Instantiate(bullet, shootPoint.position, shootPoint.rotation);
 		_.GetComponent<Rigidbody>().AddForce(shootPoint.forward * currRange * range + rb.velocity, ForceMode.VelocityChange);
 		_.GetComponent<BulletScript>().Initialize(bulletDamage, bulletExplosionRadius);
+		rb.AddRelativeForce(0f, 0f, -knockbackForce * currRange * currRange);
+		rb.AddRelativeTorque(-knockbackTorque * currRange * currRange, 0f, 0f);
+		shootLight.intensity = shootLightIntensity * currRange;
 		currRange = 0f;
 		currCooldown = cooldown;
 		shootSound.Play();
