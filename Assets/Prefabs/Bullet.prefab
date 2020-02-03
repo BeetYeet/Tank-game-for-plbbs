@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 3334476623477935022}
   - component: {fileID: 3334476623477935017}
   - component: {fileID: -6249075490543347781}
-  - component: {fileID: 8548056379425872667}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Bullet
@@ -63,17 +62,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 3334476623477935017}
+  damage: 10
+  explosionRadius: 7
+  explosionKnockback: 30
+  explosionKnockbackRadius: 7
   hitEffect: {fileID: 8461784997414014446, guid: 8af4798e2c8335a40a2a633e477b08c9,
     type: 3}
   sm: {fileID: 0}
   hitSound: {fileID: 8300000, guid: 30eadd0e14e992e4896b91f6ff42d0a2, type: 3}
---- !u!136 &8548056379425872667
+  explosionLight: {fileID: 4459856460977155580, guid: ef3b860b70232b746881821c20269988,
+    type: 3}
+  power: 1
+--- !u!136 &824795431311773012
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3334476623477935023}
+  m_GameObject: {fileID: 7379881820326566705}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
@@ -91,7 +97,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: c5ed71983012ce5498784222f68f6c27,
         type: 3}
       propertyPath: m_Name
-      value: bullet (2)
+      value: Model
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: c5ed71983012ce5498784222f68f6c27,
         type: 3}
@@ -148,8 +154,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: c5ed71983012ce5498784222f68f6c27,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: c5ed71983012ce5498784222f68f6c27,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: c5ed71983012ce5498784222f68f6c27,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5ed71983012ce5498784222f68f6c27, type: 3}
+--- !u!1 &7379881820326566705 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: c5ed71983012ce5498784222f68f6c27,
+    type: 3}
+  m_PrefabInstance: {fileID: 1534450374052856376}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5778613869865560354 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: c5ed71983012ce5498784222f68f6c27,

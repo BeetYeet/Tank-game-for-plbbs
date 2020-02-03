@@ -190,8 +190,8 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 1.5
-      minScalar: 1
+      scalar: 0.75
+      minScalar: 0.5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -4943,8 +4943,8 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 1.5
-      minScalar: 1
+      scalar: 0.75
+      minScalar: 0.5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -9771,8 +9771,8 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 1.5
-      minScalar: 1
+      scalar: 0.75
+      minScalar: 0.5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -14771,6 +14771,7 @@ GameObject:
   - component: {fileID: 1184599083}
   - component: {fileID: 1184599081}
   - component: {fileID: 1184599084}
+  - component: {fileID: 2686924845608918703}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -14873,8 +14874,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94120355ccb1b5e449dd8bc5c305ba31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 1000
-  maxHealth: 1000
+  health: 100
+  maxHealth: 100
   hitSound1: {fileID: 8300000, guid: aec7f7dc2aa22ba4695bbf0140e9d3f4, type: 3}
   hitSound2: {fileID: 8300000, guid: af65a63efdf434a4dbacd58356085ed1, type: 3}
   speedUp: 0
@@ -14896,9 +14897,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb499824cee0439489ff19440b96f73c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletDamage: 10
-  bulletExplosionRadius: 7
   bullet: {fileID: 3334476623477935023, guid: 41c1823992ae9c24cbb79b9234c6907b, type: 3}
+  bulletDamageBonus: 0
   startRange: 1.5
   range: 5
   rangeFactor: 0.9
@@ -14912,12 +14912,13 @@ MonoBehaviour:
   cooldownTimer: {fileID: 353511334}
   shootLight: {fileID: 1798632176}
   shootLightIntensity: 80
-  shootLightDecay: 1500
+  shootLightDecay: 500
   knockbackForce: 20
   knockbackTorque: 9
-  cooldown: 1
+  cooldown: 1.5
   currCooldown: 0
-  maxCurrRange: 0
+  debug: 0
+  maxCurrRange: 3.76115
   groundPlane: {fileID: 0}
   bulletPrediction: {fileID: 3234249372698446360}
   hitLight: {fileID: 0}
@@ -14964,6 +14965,7 @@ MonoBehaviour:
   reverseForce: 25
   reverseFalloff: 2
   rotationPower: 2.5
+  aimRotationFactor: 0.333
   antiDriftFactor: 0.049
 --- !u!114 &5856032863126677557
 MonoBehaviour:
@@ -14977,7 +14979,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0385402f9e51924db5dfc611447e826, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldown: 2
+  cooldown: 3
   landmine: {fileID: 3883619574216135549, guid: 7fafec5dec0e6e5449b39d068187650c,
     type: 3}
   drop: {fileID: 3328658049255336884}
@@ -15303,6 +15305,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2686924845608918703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1958486082547183761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed1b39e2052b00343bbf3526690cec8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAltitude: 50
+  minAltitude: -10
 --- !u!1 &1958486083035531708
 GameObject:
   m_ObjectHideFlags: 0
@@ -16306,13 +16322,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5497901188818760473}
-  m_LocalRotation: {x: -0.21984623, y: 0, z: 0, w: 0.97553456}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.75, z: -3.34}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1958486082547183768}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: -25.4, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!96 &3690731090344903834
 TrailRenderer:
   serializedVersion: 2
@@ -16422,6 +16438,7 @@ GameObject:
   - component: {fileID: 6226214530794397950}
   - component: {fileID: 6160380593124825974}
   - component: {fileID: 5449301649392681455}
+  - component: {fileID: 568707124964654570}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -16524,6 +16541,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b678cd279fb61ff42849043ea3bec91d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &568707124964654570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6515253995262721102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb155ff6de6835a45a9166d9d4c88bb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 1958486082547183768}
+  relativePosition: {x: 0, y: 2, z: 0}
 --- !u!1 &6590595048554068144
 GameObject:
   m_ObjectHideFlags: 0

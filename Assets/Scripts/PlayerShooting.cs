@@ -6,10 +6,9 @@ using UnityEngine.UI;
 
 public class PlayerShooting : MonoBehaviour
 {
-	[Header("Bullet Stats")]
-	public int bulletDamage;
-	public float bulletExplosionRadius;
+	[Header("Bullet")]
 	public GameObject bullet;
+	public int bulletDamageBonus = 0;
 
 	[Header("Shooting")]
 	public float startRange;
@@ -33,7 +32,9 @@ public class PlayerShooting : MonoBehaviour
 	public float currCooldown;
 
 	[Header("Debug")]
+	[SerializeField]
 	private bool debug = false;
+	[SerializeField]
 	public float maxCurrRange;
 
 	[Header("Bullet Prediction")]
@@ -129,11 +130,31 @@ public class PlayerShooting : MonoBehaviour
 		}
 		if (debug)
 		{
-			if (currRange < maxCurrRange)
+
+			//	a = currRange
+			//	b = added range
+			//	c = startRange
+			//	d = maxRange
+			//  a=b+c
+			//  b/d
+			//	
+			//
+			//
+
+
+
+			if (currRange > maxCurrRange)
 				maxCurrRange = currRange;
 		}
 
-		cooldownTimer.fillAmount = (currCooldown / cooldown);
+		if (currCooldown != 0f)
+		{
+			cooldownTimer.fillAmount = currCooldown / cooldown;
+		}
+		else
+		{
+			cooldownTimer.fillAmount = (currRange - startRange) / (maxCurrRange - startRange);
+		}
 	}
 
 	private void EndCharge()
@@ -176,7 +197,8 @@ public class PlayerShooting : MonoBehaviour
 	{
 		GameObject _ = Instantiate(bullet, shootPoint.position, shootPoint.rotation);
 		_.GetComponent<Rigidbody>().AddForce(shootPoint.forward * currRange * range + rb.velocity, ForceMode.VelocityChange);
-		_.GetComponent<BulletScript>().Initialize(bulletDamage, bulletExplosionRadius);
+		_.GetComponent<BulletScript>().damage += bulletDamageBonus;
+		_.GetComponent<BulletScript>().power *= currRange;
 		rb.AddRelativeForce(0f, 0f, -knockbackForce * currRange * currRange);
 		rb.AddRelativeTorque(-knockbackTorque * currRange * currRange, 0f, 0f);
 		shootLight.intensity = shootLightIntensity * currRange;

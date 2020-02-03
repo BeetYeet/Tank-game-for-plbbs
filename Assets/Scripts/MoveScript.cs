@@ -10,12 +10,12 @@ public class MoveScript : MonoBehaviour
 	public float gasForce;
 	public float gasFalloff;
 
-
 	public float reverseForce;
 	public float reverseFalloff;
 
-
 	public float rotationPower;
+	[Range(0f, 1f)]
+	public float aimRotationFactor = 0.5f;
 
 	[Range(0f, 1f)] public float antiDriftFactor = 0.5f;
 
@@ -27,7 +27,7 @@ public class MoveScript : MonoBehaviour
 	{
 
 
-		transform.Rotate(0, Input.GetAxisRaw("Horizontal_" + gameObject.name) * rotationPower, 0);
+		transform.Rotate(0, Input.GetAxisRaw("Horizontal_" + gameObject.name) * rotationPower * (Input.GetButton("Fire_" + gameObject.name) ? aimRotationFactor : 1f), 0);
 
 
 		Vector3 forwardVelocity = Vector3.Project(Rbody.velocity, transform.forward);

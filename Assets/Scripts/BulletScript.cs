@@ -6,11 +6,16 @@ public class BulletScript : MonoBehaviour
 {
 
 	public Rigidbody rb;
-	int damage;
-	float explosionRadius;
+	public int damage = 10;
+	public float explosionRadius = 7f;
+	public float explosionKnockback = 100f;
+	public float explosionKnockbackRadius = 10f;
 	public GameObject hitEffect;
 	public SoundManager sm;
 	public AudioClip hitSound;
+	public GameObject explosionLight;
+
+	public float power = 1f;
 
 	static List<DebugSphere> debugSpheres = new List<DebugSphere>();
 	static float lastGizmoDraw = 0;
@@ -53,13 +58,9 @@ public class BulletScript : MonoBehaviour
 	private void Start()
 	{
 		sm = GetComponent<SoundManager>();
+		transform.localScale *= Mathf.Sqrt(power);
 	}
 
-	public void Initialize(int damage, float explosionRadius)
-	{
-		this.damage = damage;
-		this.explosionRadius = explosionRadius;
-	}
 
 	private void Update()
 	{
@@ -72,6 +73,7 @@ public class BulletScript : MonoBehaviour
 		if (hitHealth != null)
 		{
 			hitHealth.DoDamage(damage * 5);
+			Push(collision.rigidbody, explosionKnockback * 1.5f);
 			Debug.Log("Hit other player directly for " + damage * 5 + " damage!");
 		}
 		else
@@ -95,8 +97,15 @@ public class BulletScript : MonoBehaviour
 		}
 		else
 			SoundManager.instance.PlaySingle(hitSound);
-
+		GameObject _ = Instantiate(explosionLight, transform.position, Quaternion.identity);
+		_.GetComponent<Light>().intensity *= power;
 	}
+
+	void Push(Rigidbody rigid, float force)
+	{
+		rigid.AddExplosionForce(force * power, transform.position, explosionKnockbackRadius);
+	}
+
 
 	private bool Explode(float radius, float thisDamage)
 	{
@@ -118,6 +127,7 @@ public class BulletScript : MonoBehaviour
 			if (hitHealth != null)
 			{
 				hitHealth.DoDamage(Mathf.RoundToInt(thisDamage));
+				Push(go.GetComponent<Rigidbody>(), explosionKnockback);
 				hit = true;
 			}
 		}

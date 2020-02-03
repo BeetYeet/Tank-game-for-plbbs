@@ -39,10 +39,10 @@ public class Health : MonoBehaviour
 		{
 			SoundManager.instance.RandomizeSfx(hitSound1, hitSound2);
 		}
-        if (health > maxHealth)
-        {
-            health = maxHealth;
-        }
+		if (health > maxHealth)
+		{
+			health = maxHealth;
+		}
 	}
 
 	public void DoDamage(int damage)
@@ -105,7 +105,7 @@ public class Health : MonoBehaviour
 
 	void Damage() //Increases Damage
 	{
-		hurt.bulletDamage += damageUp;
+		hurt.bulletDamageBonus += damageUp;
 		Debug.Log("DamageUp active");
 	}
 
