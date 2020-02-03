@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2138677392}
-  m_IndirectSpecularColor: {r: 0.27194554, g: 0.33813062, b: 0.38510233, a: 1}
+  m_IndirectSpecularColor: {r: 0.28345385, g: 0.36509046, b: 0.46481848, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -320,6 +320,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: wallCorner (2)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 0961e3e503bfb1a4fa268db4f0fa92f1,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 0961e3e503bfb1a4fa268db4f0fa92f1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -390,6 +395,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: 0961e3e503bfb1a4fa268db4f0fa92f1,
+        type: 3}
+      propertyPath: m_LightmapParameters
+      value: 
+      objectReference: {fileID: 15204, guid: 0000000000000000f000000000000000, type: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0961e3e503bfb1a4fa268db4f0fa92f1, type: 3}
 --- !u!1001 &157617466
@@ -599,6 +609,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: wallCorner (4)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 0961e3e503bfb1a4fa268db4f0fa92f1,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 0961e3e503bfb1a4fa268db4f0fa92f1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -669,6 +684,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: 0961e3e503bfb1a4fa268db4f0fa92f1,
+        type: 3}
+      propertyPath: m_LightmapParameters
+      value: 
+      objectReference: {fileID: 15204, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: -1504981713932161579, guid: 0961e3e503bfb1a4fa268db4f0fa92f1,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6061a7665e2203d4d97bf37c1fadba55, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0961e3e503bfb1a4fa268db4f0fa92f1, type: 3}
 --- !u!1 &331184888 stripped
@@ -708,6 +733,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: wallCorner (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 0961e3e503bfb1a4fa268db4f0fa92f1,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 0961e3e503bfb1a4fa268db4f0fa92f1,
         type: 3}
@@ -779,6 +809,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: 0961e3e503bfb1a4fa268db4f0fa92f1,
+        type: 3}
+      propertyPath: m_LightmapParameters
+      value: 
+      objectReference: {fileID: 15204, guid: 0000000000000000f000000000000000, type: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0961e3e503bfb1a4fa268db4f0fa92f1, type: 3}
 --- !u!1 &366979047 stripped
@@ -920,6 +955,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: wall (1)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 4ecbb77065720804ea9b38e115d4fbea,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 4ecbb77065720804ea9b38e115d4fbea,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -990,6 +1030,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: 4ecbb77065720804ea9b38e115d4fbea,
+        type: 3}
+      propertyPath: m_LightmapParameters
+      value: 
+      objectReference: {fileID: 15204, guid: 0000000000000000f000000000000000, type: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ecbb77065720804ea9b38e115d4fbea, type: 3}
 --- !u!1 &619087179
@@ -1095,6 +1140,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: wall (2)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 4ecbb77065720804ea9b38e115d4fbea,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 4ecbb77065720804ea9b38e115d4fbea,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1165,6 +1215,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: 4ecbb77065720804ea9b38e115d4fbea,
+        type: 3}
+      propertyPath: m_LightmapParameters
+      value: 
+      objectReference: {fileID: 15204, guid: 0000000000000000f000000000000000, type: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ecbb77065720804ea9b38e115d4fbea, type: 3}
 --- !u!1 &653260035
@@ -1528,6 +1583,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: wall (4)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 4ecbb77065720804ea9b38e115d4fbea,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 4ecbb77065720804ea9b38e115d4fbea,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1598,6 +1658,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: 4ecbb77065720804ea9b38e115d4fbea,
+        type: 3}
+      propertyPath: m_LightmapParameters
+      value: 
+      objectReference: {fileID: 15204, guid: 0000000000000000f000000000000000, type: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ecbb77065720804ea9b38e115d4fbea, type: 3}
 --- !u!1 &1564596970 stripped
@@ -1886,6 +1951,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: wall (3)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 4ecbb77065720804ea9b38e115d4fbea,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 4ecbb77065720804ea9b38e115d4fbea,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1956,6 +2026,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: 4ecbb77065720804ea9b38e115d4fbea,
+        type: 3}
+      propertyPath: m_LightmapParameters
+      value: 
+      objectReference: {fileID: 15204, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: -1504981713932161579, guid: 4ecbb77065720804ea9b38e115d4fbea,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ad3a1850271103c478e9540645842787, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ecbb77065720804ea9b38e115d4fbea, type: 3}
 --- !u!1 &1882643415 stripped
@@ -2091,6 +2171,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: wallCorner (3)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 0961e3e503bfb1a4fa268db4f0fa92f1,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 0961e3e503bfb1a4fa268db4f0fa92f1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2161,6 +2246,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: 0961e3e503bfb1a4fa268db4f0fa92f1,
+        type: 3}
+      propertyPath: m_LightmapParameters
+      value: 
+      objectReference: {fileID: 15204, guid: 0000000000000000f000000000000000, type: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0961e3e503bfb1a4fa268db4f0fa92f1, type: 3}
 --- !u!1 &2138677391
@@ -2191,7 +2281,7 @@ Light:
   serializedVersion: 9
   m_Type: 1
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 4.57
+  m_Intensity: 2.69
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.802082
@@ -2233,7 +2323,7 @@ Light:
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
+  m_BounceIntensity: 3.35
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
@@ -2247,10 +2337,10 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2138677391}
-  m_LocalRotation: {x: 0.6690875, y: 0.6053061, z: 0.2287399, w: 0.3655196}
+  m_LocalRotation: {x: 0.6907361, y: 0.55987877, z: 0.15127341, w: 0.43189785}
   m_LocalPosition: {x: 0.24, y: 23.1, z: 4.18}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 12.252001, y: 130, z: 90.00001}
+  m_LocalEulerAnglesHint: {x: 25.294, y: 130, z: 90.00001}
