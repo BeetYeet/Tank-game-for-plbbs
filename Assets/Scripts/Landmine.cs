@@ -42,6 +42,16 @@ public class Landmine : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
+		Trigger(other);
+	}
+
+	private void OnTriggerStay(Collider other)
+	{
+		Trigger(other);
+	}
+
+	private void Trigger(Collider other)
+	{
 		if (timer == 0f)
 		{
 			if (other.gameObject.tag == "Player")
@@ -54,5 +64,4 @@ public class Landmine : MonoBehaviour
 			}
 		}
 	}
-
 }

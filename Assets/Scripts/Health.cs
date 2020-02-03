@@ -48,6 +48,7 @@ public class Health : MonoBehaviour
 	public void DoDamage(int damage)
 	{
 		health -= damage;
+		GetComponent<Animator>().SetTrigger("Damage");
 		SoundManager.instance.RandomizeSfx(hitSound1, hitSound2);
 	}
 

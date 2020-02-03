@@ -130,19 +130,6 @@ public class PlayerShooting : MonoBehaviour
 		}
 		if (debug)
 		{
-
-			//	a = currRange
-			//	b = added range
-			//	c = startRange
-			//	d = maxRange
-			//  a=b+c
-			//  b/d
-			//	
-			//
-			//
-
-
-
 			if (currRange > maxCurrRange)
 				maxCurrRange = currRange;
 		}

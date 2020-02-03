@@ -1,29 +1,9 @@
 fileFormatVersion: 2
-guid: 098d4cbc8522ad241a2429294846937e
+guid: 0961e3e503bfb1a4fa268db4f0fa92f1
 ModelImporter:
   serializedVersion: 26
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: anisotropic2
-    second: {fileID: 2100000, guid: 8fcb5c936d0c0a24eb8e0d1c8a9eb9b9, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: blinn6
-    second: {fileID: 2100000, guid: 6456b62d9f1a501498e8a252cd7da1b6, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: lambert5
-    second: {fileID: 2100000, guid: f1c4585a235c26d49b2f8f82f5b6aad0, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: lambert6
-    second: {fileID: 2100000, guid: 9186223b651546a4a899c6d11953fb4d, type: 2}
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0

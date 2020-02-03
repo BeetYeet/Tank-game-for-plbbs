@@ -90,15 +90,18 @@ public class BulletScript : MonoBehaviour
 				Debug.Log("Hit other player indirectly for " + damage * hits);
 		}
 		Destroy(gameObject);
-		Instantiate(hitEffect, transform.position, transform.rotation);
+		GameObject _ = Instantiate(hitEffect, transform.position, transform.rotation);
+		ParticleSystem.MainModule main = _.GetComponent<ParticleSystem>().main;
+		main.startLifetime = new ParticleSystem.MinMaxCurve(power * power / 9f, power * power / 6f);
 		if (SoundManager.instance == null)
 		{
 			Debug.LogError("No SoundManager, please make one!");
 		}
 		else
 			SoundManager.instance.PlaySingle(hitSound);
-		GameObject _ = Instantiate(explosionLight, transform.position, Quaternion.identity);
+		_ = Instantiate(explosionLight, transform.position, Quaternion.identity);
 		_.GetComponent<Light>().intensity *= power;
+		Debug.Log(power);
 	}
 
 	void Push(Rigidbody rigid, float force)
