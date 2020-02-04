@@ -2,28 +2,50 @@
 
 public class Zooming : MonoBehaviour
 {
-    public Transform player1;
-    public Transform player2;
+	public Transform player1;
+	public Transform player2;
 
-    public Camera main;
+	public Camera main;
+	public float zoom = 5f;
+	public float minSize = 16;
+	public float back = 100f;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        main = GetComponent<Camera>();
-    }
+	[Range(0f, 1f)]
+	public float followFactor = .95f;
 
-    // Update is called once per frame
-    void Update()
-    {
-        var dist = Vector3.Distance(player1.position, player2.position);
+	// Start is called before the first frame update
+	void Start()
+	{
+		main = Camera.main;
+	}
 
-        var camSize = dist / 5f;
+	// Update is called once per frame
+	void Update()
+	{
+		float factor = minSize;
+		float camSize = minSize / 2f;
+		if (player1 != null && player2 != null)
+		{
+			factor = Vector3.Distance(player1.position, player2.position) / zoom;
+			camSize = Mathf.Clamp(factor, minSize, 1000);
+		}
 
-        camSize = Mathf.Clamp(dist, 6, 12);
+		main.orthographicSize = Mathf.Lerp(main.orthographicSize, camSize, followFactor);
+		Vector3 newPos = Vector3.zero;
 
-        main.orthographicSize = camSize;
+		if (player1 != null && player2 != null)
+		{
+			newPos = Vector3.Lerp(player1.position, player2.position, 0.5f);
+		}
+		else
+		{
+			if (player2 != null)
+				newPos = player2.position;
 
-        transform.position = (Vector3.Lerp(player1.position + transform.forward * -20, player2.position + transform.forward * -20, 0.5f));
-    }
+			if (player1 != null)
+				newPos = player1.position;
+		}
+		newPos -= transform.forward * back;
+		transform.position = Vector3.Lerp(transform.position, newPos, followFactor);
+	}
 }

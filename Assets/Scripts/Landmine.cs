@@ -9,6 +9,9 @@ public class Landmine : MonoBehaviour
 	public float timer;
 	float timerMax;
 
+	public float explosionForce = 10f;
+	public float explosionUpFactor = .5f;
+
 	public UnityEngine.UI.Image timerImage;
 
 	public GameObject Explosion;
@@ -39,6 +42,16 @@ public class Landmine : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
+		Trigger(other);
+	}
+
+	private void OnTriggerStay(Collider other)
+	{
+		Trigger(other);
+	}
+
+	private void Trigger(Collider other)
+	{
 		if (timer == 0f)
 		{
 			if (other.gameObject.tag == "Player")
@@ -46,9 +59,9 @@ public class Landmine : MonoBehaviour
 				Instantiate(Explosion, gameObject.transform.position, gameObject.transform.rotation);
 				Destroy(gameObject);
 				other.gameObject.GetComponent<Health>().DoDamage(damage);
+				other.gameObject.GetComponent<Rigidbody>().AddExplosionForce(explosionForce, transform.position, 5f, explosionUpFactor);
 				Debug.Log("Mine Triggered");
 			}
 		}
 	}
-
 }

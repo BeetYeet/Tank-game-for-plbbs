@@ -252,6 +252,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 40
   timer: 3
+  explosionForce: 400
+  explosionUpFactor: 0.1
   timerImage: {fileID: 1669474247}
   Explosion: {fileID: 8461784997414014446, guid: 8af4798e2c8335a40a2a633e477b08c9,
     type: 3}
@@ -293,6 +295,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Mine (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 6477e222ea7edf44b85812d0241e7763,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 6477e222ea7edf44b85812d0241e7763,
         type: 3}

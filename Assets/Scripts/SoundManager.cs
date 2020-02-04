@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class SoundManager : MonoBehaviour
 {
     public AudioSource eFXsound;
@@ -11,6 +12,8 @@ public class SoundManager : MonoBehaviour
     public float lowPitch;
     public float highPitch;
     public static SoundManager instance = null;
+
+	public AudioClip music;
 
     //How to use
     // för att använda soundmanager så skriver man i sitt egna skript ljudet man vill ha och sen skriver man:
@@ -22,10 +25,14 @@ public class SoundManager : MonoBehaviour
     {
         if (instance == null)
             instance = this;
-        else if (instance != this)
+        else if (instance != this){
             Destroy(gameObject);
+			return;
+		}
 
         DontDestroyOnLoad(gameObject);
+		musicSource.clip = music;
+		musicSource.Play();
     }
 
     public void PlaySingle(AudioClip clip)

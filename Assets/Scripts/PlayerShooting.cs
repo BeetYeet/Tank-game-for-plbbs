@@ -2,30 +2,40 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerShooting : MonoBehaviour
 {
-	[Header("Bullet Stats")]
-	public int bulletDamage;
-	public AnimationCurve bulletDamageFalloff;
-	public float bulletExplosionRadius;
+	[Header("Bullet")]
 	public GameObject bullet;
+	[SerializeField]
+	public BulletScript.BulletInfo bulletStats = new BulletScript.BulletInfo(10, 7, 150, 7, 1);
 
 	[Header("Shooting")]
-	float currRange;
 	public float startRange;
 	public float range;
 	public float rangeFactor;
 	public float rangeChargeUp;
+	float currRange;
 	public Transform shootPoint;
 	public const string fireButton = "Fire_";
+	public AudioSource shootSound;
+	public List<ParticleSystem> particles = new List<ParticleSystem>();
+	public Image cooldownTimer;
+	public Light shootLight;
+	public float shootLightIntensity = 15f;
+	public float shootLightDecay = 5f;
+	public float knockbackForce = 5f;
+	public float knockbackTorque = 5f;
 
 	[Header("Cooldown")]
 	public float cooldown;
 	public float currCooldown;
 
 	[Header("Debug")]
+	[SerializeField]
 	private bool debug = false;
+	[SerializeField]
 	public float maxCurrRange;
 
 	[Header("Bullet Prediction")]
@@ -40,6 +50,11 @@ public class PlayerShooting : MonoBehaviour
 	void Start()
 	{
 		rb = GetComponent<Rigidbody>();
+	}
+
+	void OnDrawGizmos()
+	{
+		BulletScript.TriggerGizmos();
 	}
 
 	List<Vector3> GetLandingPosition(Vector3 initialSpeed, Vector3 initialPosition)
@@ -88,6 +103,20 @@ public class PlayerShooting : MonoBehaviour
 
 	void Update()
 	{
+
+		if (currCooldown != 0f)
+		{
+			cooldownTimer.fillAmount = currCooldown / cooldown;
+		}
+		else
+		{
+			cooldownTimer.fillAmount = (currRange - startRange) / (maxCurrRange - startRange);
+		}
+
+		if (!GameController.gameIsInAction)
+			return;
+
+		shootLight.intensity -= Time.deltaTime * shootLightDecay;
 		if (currCooldown > 0f)
 		{
 			currCooldown -= Time.deltaTime;
@@ -114,9 +143,10 @@ public class PlayerShooting : MonoBehaviour
 		}
 		if (debug)
 		{
-			if (currRange < maxCurrRange)
+			if (currRange > maxCurrRange)
 				maxCurrRange = currRange;
 		}
+
 	}
 
 	private void EndCharge()
@@ -159,8 +189,14 @@ public class PlayerShooting : MonoBehaviour
 	{
 		GameObject _ = Instantiate(bullet, shootPoint.position, shootPoint.rotation);
 		_.GetComponent<Rigidbody>().AddForce(shootPoint.forward * currRange * range + rb.velocity, ForceMode.VelocityChange);
-		_.GetComponent<BulletScript>().Initialize(bulletDamage, bulletExplosionRadius, bulletDamageFalloff);
+		bulletStats.power = currRange;
+		_.GetComponent<BulletScript>().stats = bulletStats;
+		rb.AddRelativeForce(0f, 0f, -knockbackForce * currRange * currRange);
+		rb.AddRelativeTorque(-knockbackTorque * currRange * currRange, 0f, 0f);
+		shootLight.intensity = shootLightIntensity * currRange;
 		currRange = 0f;
 		currCooldown = cooldown;
+		shootSound.Play();
+		particles.ForEach(x => { x.Play(); });
 	}
 }

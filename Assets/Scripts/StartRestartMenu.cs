@@ -12,7 +12,6 @@ public class StartRestartMenu : MonoBehaviour
     public string victoryString;
     private void Start()
     {
-        restartCanvas = GameObject.Find("EndGameMenu");
         if (player1 == null || player2 == null)
         {
             Debug.LogError("PlayerObjects Not Assigned");
