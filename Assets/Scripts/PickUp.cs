@@ -6,6 +6,7 @@ public class Pickup : MonoBehaviour
 {
 	public float speedUp;
 	public int damageUp;
+	[Range(0, 100)]
 	public int healthUp;
 	[Range(0f, 1f)] //take x less part damage
 	public float armorUp;
@@ -36,6 +37,11 @@ public class Pickup : MonoBehaviour
 		Upgrade pickup = Upgrade.None;
 		if (collider.gameObject.tag == "Pickup")
 		{
+			if (!collider.transform.root.gameObject.activeSelf)
+				return;
+
+			collider.transform.root.gameObject.SetActive(false);
+
 			pickup = (Upgrade)Random.Range(0, 4);
 
 			if (floatingTextPrefab)
@@ -54,22 +60,22 @@ public class Pickup : MonoBehaviour
 		string text = "";
 		if (pickup == Upgrade.Speed)
 		{
-			text = ((speedUp) / move.gasForce).ToString("P") + " Max Speed";
+			text = "Max Speed Increase";
 			Speed();
 		}
 		else if (pickup == Upgrade.Damage)
 		{
-			text = "+" + (damageUp / hurt.bulletStats.damage).ToString("P") + " Damage";
+			text = "Damage Increase";
 			Damage();
 		}
 		else if (pickup == Upgrade.Health)
 		{
-			text = "+" + healthUp + " Health";
+			text = "Healed " + healthUp + "% Health";
 			HealthUp();
 		}
 		else if (pickup == Upgrade.Armor)
 		{
-			text = armorUp.ToString("P") + " less damage";
+			text = "Armor Increase";
 			ArmorUp();
 		}
 		GameObject go = Instantiate(floatingTextPrefab, transform.position, Quaternion.identity, transform);

@@ -103,6 +103,19 @@ public class PlayerShooting : MonoBehaviour
 
 	void Update()
 	{
+
+		if (currCooldown != 0f)
+		{
+			cooldownTimer.fillAmount = currCooldown / cooldown;
+		}
+		else
+		{
+			cooldownTimer.fillAmount = (currRange - startRange) / (maxCurrRange - startRange);
+		}
+
+		if (!GameController.gameIsInAction)
+			return;
+
 		shootLight.intensity -= Time.deltaTime * shootLightDecay;
 		if (currCooldown > 0f)
 		{
@@ -134,14 +147,6 @@ public class PlayerShooting : MonoBehaviour
 				maxCurrRange = currRange;
 		}
 
-		if (currCooldown != 0f)
-		{
-			cooldownTimer.fillAmount = currCooldown / cooldown;
-		}
-		else
-		{
-			cooldownTimer.fillAmount = (currRange - startRange) / (maxCurrRange - startRange);
-		}
 	}
 
 	private void EndCharge()

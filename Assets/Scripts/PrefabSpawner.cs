@@ -26,6 +26,10 @@ public class PrefabSpawner : MonoBehaviour
 			exists = false;
 			timer = Random.Range(respawnMinimum, respawnMaximum);
 		}
+
+		if (!GameController.gameIsInAction)
+			return;
+
 		if (!exists && timer > 0f)
 		{
 			timer -= Time.deltaTime;

@@ -22,6 +22,13 @@ public class MineDrop : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
+
+		mineCooldownImage.fillAmount = cooldownTimer / cooldown;
+
+
+		if (!GameController.gameIsInAction)
+			return;
+
 		if (cooldownTimer > 0)
 		{
 			cooldownTimer -= Time.deltaTime;
@@ -38,6 +45,5 @@ public class MineDrop : MonoBehaviour
 			cooldownTimer = cooldown;
 		}
 
-		mineCooldownImage.fillAmount = cooldownTimer / cooldown;
 	}
 }

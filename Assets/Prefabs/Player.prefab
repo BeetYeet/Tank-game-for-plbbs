@@ -14962,9 +14962,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gasForce: 35
-  gasFalloff: 3
+  gasFalloff: 2
   reverseForce: 25
-  reverseFalloff: 2
+  reverseFalloff: 3
   rotationPower: 2.5
   aimRotationFactor: 0.333
   antiDriftFactor: 0.049
@@ -15352,9 +15352,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedUp: 10
-  damageUp: 5
+  damageUp: 1
   healthUp: 60
-  armorUp: 0.5
+  armorUp: 0.1
   move: {fileID: 717287820}
   hurt: {fileID: 1958486082547183775}
   health: {fileID: 1958486082547183774}
@@ -17029,6 +17029,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FloatingText
       objectReference: {fileID: 0}
+    - target: {fileID: 1410610967090868008, guid: 42c1be71e4ab632478041adf80f81687,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1410610967090868015, guid: 42c1be71e4ab632478041adf80f81687,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -17083,6 +17088,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4653339648807929352, guid: 42c1be71e4ab632478041adf80f81687,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 4653339648807929352, guid: 42c1be71e4ab632478041adf80f81687,
+        type: 3}
+      propertyPath: m_fontColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4653339648807929352, guid: 42c1be71e4ab632478041adf80f81687,
+        type: 3}
+      propertyPath: m_fontColor.g
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 42c1be71e4ab632478041adf80f81687, type: 3}

@@ -26,6 +26,8 @@ public class MoveScript : MonoBehaviour
 	private void FixedUpdate()
 	{
 
+		if (!GameController.gameIsInAction)
+			return;
 
 		transform.Rotate(0, Input.GetAxisRaw("Horizontal_" + gameObject.name) * rotationPower * (Input.GetButton("Fire_" + gameObject.name) ? aimRotationFactor : 1f), 0);
 
