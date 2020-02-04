@@ -40,7 +40,7 @@ public class PlayerShooting : MonoBehaviour
 
 	[Header("Bullet Prediction")]
 	public GameObject groundPlane;
-	float markerHeightAboveGround = .1f;
+	public float markerHeightAboveGround = .1f;
 	public TrailRenderer bulletPrediction;
 	public Light hitLight;
 

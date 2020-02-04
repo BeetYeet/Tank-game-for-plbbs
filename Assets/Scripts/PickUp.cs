@@ -25,9 +25,9 @@ public class PickUp : MonoBehaviour
 
 	public enum Upgrade
 	{
+		Health,
 		Speed,
 		Damage,
-		Health,
 		Armor,
 		None
 	}
@@ -42,7 +42,16 @@ public class PickUp : MonoBehaviour
 
 			collider.transform.root.gameObject.SetActive(false);
 
-			pickup = (Upgrade)Random.Range(0, 4);
+			if (health.health / (float)health.maxHealth <= 1f - healthUp / 200f)
+			{
+				pickup = (Upgrade)Random.Range(0, 4);
+				Debug.Log("Healable");
+			}
+			else
+			{
+				pickup = (Upgrade)Random.Range(1, 4);
+				Debug.Log("Not Healable");
+			}
 
 			if (floatingTextPrefab)
 			{

@@ -18,25 +18,25 @@ public class Zooming : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
-		if (current || current != this)
+		if (current == null)
+		{
+			current = this;
+		}
+		else
 		{
 			Destroy(this);
 			return;
 		}
-		current = this;
-
 		main = Camera.main;
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
-		float factor = minSize;
 		float camSize = minSize / 2f;
 		if (player1 != null && player2 != null)
 		{
-			factor = Vector3.Distance(player1.position, player2.position) / zoom;
-			camSize = Mathf.Clamp(factor, minSize, 1000);
+			camSize = Mathf.Clamp(Vector3.Distance(player1.position, player2.position) / zoom, minSize, 1000);
 		}
 
 		main.orthographicSize = Mathf.Lerp(main.orthographicSize, camSize, followFactor);

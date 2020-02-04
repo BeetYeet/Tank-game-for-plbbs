@@ -48,7 +48,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!114 &-6249075490543347781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62,17 +62,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 3334476623477935017}
-  damage: 10
-  explosionRadius: 7
-  explosionKnockback: 30
-  explosionKnockbackRadius: 7
   hitEffect: {fileID: 8461784997414014446, guid: 8af4798e2c8335a40a2a633e477b08c9,
     type: 3}
   sm: {fileID: 0}
   hitSound: {fileID: 8300000, guid: 30eadd0e14e992e4896b91f6ff42d0a2, type: 3}
   explosionLight: {fileID: 4459856460977155580, guid: ef3b860b70232b746881821c20269988,
     type: 3}
-  power: 1
+  stats:
+    damage: 0
+    explosionRadius: 0
+    explosionKnockback: 0
+    explosionKnockbackRadius: 0
+    power: 0
 --- !u!136 &824795431311773012
 CapsuleCollider:
   m_ObjectHideFlags: 0

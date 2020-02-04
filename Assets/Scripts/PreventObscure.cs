@@ -16,11 +16,17 @@ public class PreventObscure : MonoBehaviour
 	public float opacitychange = 1f;
 
 	Material mat;
+	Material originalMat;
+	MeshRenderer mr;
 
 	private void Start()
 	{
-		mat = new Material(GetComponent<MeshRenderer>().material);
-		GetComponent<MeshRenderer>().material = mat;
+		mr = GetComponent<MeshRenderer>();
+		mat = new Material(mr.material);
+		mat.SetFloat("_Surface", (float)SurfaceType.Transparent);
+		mat.EnableKeyword("_ALPHABLEND_ON");
+		mat.DisableKeyword("_SPECGLOSSMAP");
+		originalMat = mr.material;
 	}
 
 
@@ -28,39 +34,41 @@ public class PreventObscure : MonoBehaviour
 	{
 		if (TestObj(player1) || TestObj(player2))
 		{
+			Debug.Log("Fading out");
 			FadeOut();
-			if (mat.GetFloat("_Surface") == (float)SurfaceType.Opaque)
-				mat.SetFloat("_Surface", (float)SurfaceType.Transparent);
-			Debug.Log("Obstructing Player");
 		}
 		else
 		{
+			Debug.Log("Fading in");
 			FadeIn();
-			if (mat.GetFloat("_Surface") == (float)SurfaceType.Transparent)
-				mat.SetFloat("_Surface", (float)SurfaceType.Opaque);
 		}
 	}
 
 	private void FadeIn()
 	{
-		opacity = Mathf.Clamp(opacity - opacitychange * Time.deltaTime, minOpacity, 1f);
-		Color col = mat.GetColor("_BaseColor");
-		col.a = opacity;
-		mat.SetColor("_BaseColor", col);
-	}
-
-	private void FadeOut()
-	{
 		opacity = Mathf.Clamp(opacity + opacitychange * Time.deltaTime, minOpacity, 1f);
 		Color col = mat.GetColor("_BaseColor");
 		col.a = opacity;
 		mat.SetColor("_BaseColor", col);
+		if (opacity == 1f)
+		{
+			mr.material = originalMat;
+		}
+	}
+
+	private void FadeOut()
+	{
+		opacity = Mathf.Clamp(opacity - opacitychange * Time.deltaTime, minOpacity, 1f);
+		Color col = mat.GetColor("_BaseColor");
+		col.a = opacity;
+		mat.SetColor("_BaseColor", col);
+		mr.material = mat;
 	}
 
 
 	bool TestObj(GameObject obj)
 	{
-		Ray ray = Camera.main.ScreenPointToRay(obj.transform.position);
+		Ray ray = Camera.main.ScreenPointToRay(Camera.main.WorldToScreenPoint(obj.transform.position));
 		return Physics.Raycast(ray, 1000, layerMask);
 	}
 }
