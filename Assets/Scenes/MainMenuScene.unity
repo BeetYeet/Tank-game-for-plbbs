@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 115642010}
   - component: {fileID: 115642012}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Scene Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -157,7 +157,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transitionAnim: {fileID: 43775032}
-  sceneName: AudioManagerScene
+  sceneName: MainScene
+  sceneName2: CreditsScene
   trigger: {fileID: 0}
 --- !u!4 &115642011
 Transform:
@@ -1053,6 +1054,8 @@ MonoBehaviour:
   selectedMap: 0
   selectionSound: {fileID: 8300000, guid: a58ed6c97499e3243a6fc7371bdeca18, type: 3}
   change: 0
+  button1: 0
+  button2: 0
 --- !u!114 &1407482019
 MonoBehaviour:
   m_ObjectHideFlags: 0
