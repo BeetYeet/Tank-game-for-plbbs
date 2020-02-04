@@ -89,7 +89,7 @@ public class BulletScript : MonoBehaviour
 		if (hitHealth != null)
 		{
 			hitHealth.DoDamage(stats.damage * 5);
-			Push(collision.rigidbody, stats.explosionKnockback * 1.5f);
+			Push(collision.rigidbody, stats.explosionKnockback * 1.5f, stats.explosionKnockbackRadius);
 			Debug.Log("Hit other player directly for " + stats.damage * 5 + " damage!");
 		}
 		else
@@ -105,7 +105,7 @@ public class BulletScript : MonoBehaviour
 			if (hits != 0)
 				Debug.Log("Hit other player indirectly for " + stats.damage * hits);
 		}
-		Destroy(gameObject);
+		PropExplode();
 		GameObject _ = Instantiate(hitEffect, transform.position, transform.rotation);
 		ParticleSystem.MainModule main = _.GetComponent<ParticleSystem>().main;
 		main.startLifetime = new ParticleSystem.MinMaxCurve(stats.power * stats.power / 9f, stats.power * stats.power / 6f);
@@ -117,11 +117,12 @@ public class BulletScript : MonoBehaviour
 			SoundManager.instance.PlaySingle(hitSound);
 		_ = Instantiate(explosionLight, transform.position, Quaternion.identity);
 		_.GetComponent<Light>().intensity *= stats.power;
+		Destroy(gameObject);
 	}
 
-	void Push(Rigidbody rigid, float force)
+	void Push(Rigidbody rigid, float force, float radius)
 	{
-		rigid.AddExplosionForce(force * stats.power, transform.position, stats.explosionKnockbackRadius);
+		rigid.AddExplosionForce(force * stats.power, transform.position, radius);
 	}
 
 
@@ -145,11 +146,25 @@ public class BulletScript : MonoBehaviour
 			if (hitHealth != null)
 			{
 				hitHealth.DoDamage(Mathf.RoundToInt(thisDamage));
-				Push(go.GetComponent<Rigidbody>(), stats.explosionKnockback);
+				Push(go.GetComponent<Rigidbody>(), stats.explosionKnockback, stats.explosionKnockbackRadius);
 				hit = true;
 			}
 		}
 		return hit;
+	}
+
+
+	void PropExplode()
+	{
+		Collider[] cols = Physics.OverlapSphere(transform.position, stats.explosionKnockbackRadius * 2f);
+		foreach (Collider c in cols)
+		{
+			Rigidbody rb = c.transform.root.GetComponent<Rigidbody>();
+			if (rb != null)
+			{
+				Push(rb, stats.explosionKnockback / 50f, stats.explosionKnockbackRadius * 2f);
+			}
+		}
 	}
 
 	struct DebugSphere

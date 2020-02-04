@@ -11,7 +11,13 @@ public class AltitudeLimit : MonoBehaviour
 	{
 		if (transform.position.y > maxAltitude || transform.position.y < minAltitude)
 		{
-			GetComponent<Health>().health = 0;
+			Health h = GetComponent<Health>();
+			if (h)
+			{
+				h.health = 0;
+				return;
+			}
+			Destroy(gameObject);
 		}
 	}
 }

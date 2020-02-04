@@ -14921,6 +14921,7 @@ MonoBehaviour:
   debug: 0
   maxCurrRange: 3.76115
   groundPlane: {fileID: 0}
+  markerHeightAboveGround: 0.4
   bulletPrediction: {fileID: 3234249372698446360}
   hitLight: {fileID: 0}
 --- !u!65 &1958486082547183773

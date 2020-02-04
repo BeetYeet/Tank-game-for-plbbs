@@ -23,7 +23,7 @@ public class StartRestartMenu : MonoBehaviour
         if (player1 == null || player2 == null || Input.GetKeyDown(KeyCode.Escape))
         {
             restartCanvas.SetActive(true);
-            Time.timeScale = 0.1f;
+            Time.timeScale = 0.03f;
         }
         else
         {
