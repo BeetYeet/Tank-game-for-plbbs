@@ -15354,7 +15354,7 @@ MonoBehaviour:
   speedUp: 10
   damageUp: 1
   healthUp: 60
-  armorUp: 0.1
+  armorUp: 0.2
   move: {fileID: 717287820}
   hurt: {fileID: 1958486082547183775}
   health: {fileID: 1958486082547183774}

@@ -13,9 +13,18 @@ public class Zooming : MonoBehaviour
 	[Range(0f, 1f)]
 	public float followFactor = .95f;
 
+	public Zooming current;
+
 	// Start is called before the first frame update
 	void Start()
 	{
+		if (current || current != this)
+		{
+			Destroy(this);
+			return;
+		}
+		current = this;
+
 		main = Camera.main;
 	}
 
