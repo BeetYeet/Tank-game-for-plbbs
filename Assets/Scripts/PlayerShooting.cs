@@ -8,7 +8,8 @@ public class PlayerShooting : MonoBehaviour
 {
 	[Header("Bullet")]
 	public GameObject bullet;
-	public int bulletDamageBonus = 0;
+	[SerializeField]
+	public BulletScript.BulletInfo bulletStats = new BulletScript.BulletInfo(10, 7, 150, 7, 1);
 
 	[Header("Shooting")]
 	public float startRange;
@@ -42,7 +43,6 @@ public class PlayerShooting : MonoBehaviour
 	float markerHeightAboveGround = .1f;
 	public TrailRenderer bulletPrediction;
 	public Light hitLight;
-
 
 
 	Rigidbody rb;
@@ -184,8 +184,8 @@ public class PlayerShooting : MonoBehaviour
 	{
 		GameObject _ = Instantiate(bullet, shootPoint.position, shootPoint.rotation);
 		_.GetComponent<Rigidbody>().AddForce(shootPoint.forward * currRange * range + rb.velocity, ForceMode.VelocityChange);
-		_.GetComponent<BulletScript>().damage += bulletDamageBonus;
-		_.GetComponent<BulletScript>().power *= currRange;
+		bulletStats.power = currRange;
+		_.GetComponent<BulletScript>().stats = bulletStats;
 		rb.AddRelativeForce(0f, 0f, -knockbackForce * currRange * currRange);
 		rb.AddRelativeTorque(-knockbackTorque * currRange * currRange, 0f, 0f);
 		shootLight.intensity = shootLightIntensity * currRange;

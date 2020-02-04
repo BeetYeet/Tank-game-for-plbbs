@@ -34,12 +34,12 @@ public class MoveScript : MonoBehaviour
 		Debug.DrawRay(transform.position, forwardVelocity);
 		if (Input.GetButton("Brake_" + gameObject.name))
 		{
-			Rbody.AddForce(-transform.forward * Time.fixedDeltaTime * (reverseForce - Rbody.velocity.magnitude * gasFalloff), ForceMode.VelocityChange);
+			Rbody.AddForce(-transform.forward * Time.fixedDeltaTime * Mathf.Clamp(reverseForce - Rbody.velocity.magnitude * reverseFalloff, 0f, Mathf.Infinity), ForceMode.VelocityChange);
 		}
 
 		if (Input.GetButton("Gas_" + gameObject.name))
 		{
-			Rbody.AddForce(transform.forward * Time.fixedDeltaTime * (gasForce - Rbody.velocity.magnitude * reverseFalloff), ForceMode.VelocityChange);
+			Rbody.AddForce(transform.forward * Time.fixedDeltaTime * Mathf.Clamp(gasForce - Rbody.velocity.magnitude * gasFalloff, 0f, Mathf.Infinity), ForceMode.VelocityChange);
 		}
 
 

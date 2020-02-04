@@ -6,16 +6,32 @@ public class BulletScript : MonoBehaviour
 {
 
 	public Rigidbody rb;
-	public int damage = 10;
-	public float explosionRadius = 7f;
-	public float explosionKnockback = 100f;
-	public float explosionKnockbackRadius = 10f;
 	public GameObject hitEffect;
 	public SoundManager sm;
 	public AudioClip hitSound;
 	public GameObject explosionLight;
 
-	public float power = 1f;
+	[SerializeField]
+	public BulletInfo stats;
+
+	[System.Serializable]
+	public struct BulletInfo
+	{
+		public int damage;
+		public float explosionRadius;
+		public float explosionKnockback;
+		public float explosionKnockbackRadius;
+		public float power;
+		public BulletInfo(int damage, float explosionRadius, float explosionKnockback, float explosionKnockbackRadius, float power)
+		{
+			this.damage = damage;
+			this.explosionRadius = explosionRadius;
+			this.explosionKnockback = explosionKnockback;
+			this.explosionKnockbackRadius = explosionKnockbackRadius;
+			this.power = power;
+		}
+	}
+
 
 	static List<DebugSphere> debugSpheres = new List<DebugSphere>();
 	static float lastGizmoDraw = 0;
@@ -58,7 +74,7 @@ public class BulletScript : MonoBehaviour
 	private void Start()
 	{
 		sm = GetComponent<SoundManager>();
-		transform.localScale *= Mathf.Sqrt(power);
+		transform.localScale *= Mathf.Sqrt(stats.power);
 	}
 
 
@@ -72,27 +88,27 @@ public class BulletScript : MonoBehaviour
 		Health hitHealth = collision.gameObject.GetComponent<Health>();
 		if (hitHealth != null)
 		{
-			hitHealth.DoDamage(damage * 5);
-			Push(collision.rigidbody, explosionKnockback * 1.5f);
-			Debug.Log("Hit other player directly for " + damage * 5 + " damage!");
+			hitHealth.DoDamage(stats.damage * 5);
+			Push(collision.rigidbody, stats.explosionKnockback * 1.5f);
+			Debug.Log("Hit other player directly for " + stats.damage * 5 + " damage!");
 		}
 		else
 		{
 			int hits = 0;
 			for (int i = 0; i < 4; i++)
 			{
-				if (Explode(explosionRadius / Mathf.Pow(2f, i), damage))
+				if (Explode(stats.explosionRadius / Mathf.Pow(2f, i), stats.damage))
 				{
 					hits++;
 				}
 			}
 			if (hits != 0)
-				Debug.Log("Hit other player indirectly for " + damage * hits);
+				Debug.Log("Hit other player indirectly for " + stats.damage * hits);
 		}
 		Destroy(gameObject);
 		GameObject _ = Instantiate(hitEffect, transform.position, transform.rotation);
 		ParticleSystem.MainModule main = _.GetComponent<ParticleSystem>().main;
-		main.startLifetime = new ParticleSystem.MinMaxCurve(power * power / 9f, power * power / 6f);
+		main.startLifetime = new ParticleSystem.MinMaxCurve(stats.power * stats.power / 9f, stats.power * stats.power / 6f);
 		if (SoundManager.instance == null)
 		{
 			Debug.LogError("No SoundManager, please make one!");
@@ -100,13 +116,12 @@ public class BulletScript : MonoBehaviour
 		else
 			SoundManager.instance.PlaySingle(hitSound);
 		_ = Instantiate(explosionLight, transform.position, Quaternion.identity);
-		_.GetComponent<Light>().intensity *= power;
-		Debug.Log(power);
+		_.GetComponent<Light>().intensity *= stats.power;
 	}
 
 	void Push(Rigidbody rigid, float force)
 	{
-		rigid.AddExplosionForce(force * power, transform.position, explosionKnockbackRadius);
+		rigid.AddExplosionForce(force * stats.power, transform.position, stats.explosionKnockbackRadius);
 	}
 
 
@@ -130,7 +145,7 @@ public class BulletScript : MonoBehaviour
 			if (hitHealth != null)
 			{
 				hitHealth.DoDamage(Mathf.RoundToInt(thisDamage));
-				Push(go.GetComponent<Rigidbody>(), explosionKnockback);
+				Push(go.GetComponent<Rigidbody>(), stats.explosionKnockback);
 				hit = true;
 			}
 		}
