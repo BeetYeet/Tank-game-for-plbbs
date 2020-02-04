@@ -245,11 +245,12 @@ MonoBehaviour:
   maxHealth: 100
   hitSound1: {fileID: 8300000, guid: aec7f7dc2aa22ba4695bbf0140e9d3f4, type: 3}
   hitSound2: {fileID: 8300000, guid: af65a63efdf434a4dbacd58356085ed1, type: 3}
-  speedUp: 0
-  damageUp: 0
-  healthUp: 0
+  speedUp: 5
+  damageUp: 5
+  healthUp: 80
   pickUpNumber: 0
-  floatingTextPrefab: {fileID: 0}
+  floatingTextPrefab: {fileID: 1410610967090868008, guid: 42c1be71e4ab632478041adf80f81687,
+    type: 3}
   move: {fileID: 0}
   hurt: {fileID: 0}
 --- !u!114 &1958486082547183775
