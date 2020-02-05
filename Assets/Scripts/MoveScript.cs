@@ -17,6 +17,13 @@ public class MoveScript : MonoBehaviour
 	[Range(0f, 1f)]
 	public float aimRotationFactor = 0.5f;
 
+	public const string horizontalControl = "Horizontal_";
+	public const string horizontalControlDebug = "Horizontal_Debug_";
+	public const string gasControl = "Gas_";
+	public const string brakeControl = "Brake_";
+	public const string fireControl = "Fire_";
+
+
 	[Range(0f, 1f)] public float antiDriftFactor = 0.5f;
 
 	void Start()
@@ -29,17 +36,17 @@ public class MoveScript : MonoBehaviour
 		if (!GameController.gameIsInAction)
 			return;
 
-		transform.Rotate(0, Input.GetAxisRaw("Horizontal_" + gameObject.name) * rotationPower * (Input.GetButton("Fire_" + gameObject.name) ? aimRotationFactor : 1f), 0);
+		transform.Rotate(0, (Input.GetAxisRaw(horizontalControlDebug + gameObject.name) + Input.GetAxisRaw(horizontalControl + gameObject.name)) * rotationPower * (Input.GetButton(fireControl + gameObject.name) ? aimRotationFactor : 1f), 0);
 
 
 		Vector3 forwardVelocity = Vector3.Project(Rbody.velocity, transform.forward);
 		Debug.DrawRay(transform.position, forwardVelocity);
-		if (Input.GetButton("Brake_" + gameObject.name))
+		if (Input.GetButton(brakeControl + gameObject.name))
 		{
 			Rbody.AddForce(-transform.forward * Time.fixedDeltaTime * Mathf.Clamp(reverseForce - Rbody.velocity.magnitude * reverseFalloff, 0f, Mathf.Infinity), ForceMode.VelocityChange);
 		}
 
-		if (Input.GetButton("Gas_" + gameObject.name))
+		if (Input.GetButton(gasControl + gameObject.name))
 		{
 			Rbody.AddForce(transform.forward * Time.fixedDeltaTime * Mathf.Clamp(gasForce - Rbody.velocity.magnitude * gasFalloff, 0f, Mathf.Infinity), ForceMode.VelocityChange);
 		}
