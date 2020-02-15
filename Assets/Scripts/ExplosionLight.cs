@@ -10,7 +10,7 @@ public class ExplosionLight : MonoBehaviour
 
 	public float rise = 1.5f;
 
-	Light light;
+	new Light light;
 	void Start()
 	{
 		light = GetComponent<Light>();
