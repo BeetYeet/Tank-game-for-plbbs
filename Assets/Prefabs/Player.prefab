@@ -14966,7 +14966,7 @@ MonoBehaviour:
   gasFalloff: 2
   reverseForce: 25
   reverseFalloff: 3
-  rotationPower: 2.5
+  rotationPower: 130
   aimRotationFactor: 0.333
   antiDriftFactor: 0.049
 --- !u!114 &5856032863126677557

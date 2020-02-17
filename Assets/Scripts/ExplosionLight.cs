@@ -20,7 +20,7 @@ public class ExplosionLight : MonoBehaviour
 	void Update()
 	{
 		light.intensity = Mathf.Lerp(light.intensity, light.intensity * (1f - linearDecayRate), Time.deltaTime);
-		light.intensity -= constantDecayRate;
+		light.intensity -= constantDecayRate * Time.deltaTime;
 
 		if (light.intensity <= 0f)
 		{

@@ -103,6 +103,8 @@ public class PlayerShooting : MonoBehaviour
 
 	void Update()
 	{
+		if (Time.timeScale == 0f)
+			return;
 
 		if (currCooldown != 0f)
 		{

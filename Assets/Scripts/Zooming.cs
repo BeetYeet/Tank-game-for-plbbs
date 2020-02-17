@@ -55,6 +55,6 @@ public class Zooming : MonoBehaviour
 				newPos = player1.position;
 		}
 		newPos -= transform.forward * back;
-		transform.position = Vector3.Lerp(transform.position, newPos, followFactor);
+		transform.position = Vector3.Lerp(transform.position, newPos, Mathf.Pow(followFactor, Time.deltaTime));
 	}
 }

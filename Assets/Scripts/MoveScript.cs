@@ -21,8 +21,6 @@ public class MoveScript : MonoBehaviour
 	public const string horizontalControlDebug = "Horizontal_Debug_";
 	public const string gasControl = "Gas_";
 	public const string brakeControl = "Brake_";
-	public const string fireControl = "Fire_";
-
 
 	[Range(0f, 1f)] public float antiDriftFactor = 0.5f;
 
@@ -36,7 +34,7 @@ public class MoveScript : MonoBehaviour
 		if (!GameController.gameIsInAction)
 			return;
 
-		transform.Rotate(0, (Input.GetAxisRaw(horizontalControlDebug + gameObject.name) + Input.GetAxisRaw(horizontalControl + gameObject.name)) * rotationPower * (Input.GetButton(fireControl + gameObject.name) ? aimRotationFactor : 1f), 0);
+		transform.Rotate(0, (Input.GetAxisRaw(horizontalControlDebug + gameObject.name) + Input.GetAxisRaw(horizontalControl + gameObject.name)) * rotationPower * Time.fixedDeltaTime, 0);
 
 
 		Vector3 forwardVelocity = Vector3.Project(Rbody.velocity, transform.forward);

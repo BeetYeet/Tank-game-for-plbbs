@@ -104,6 +104,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9479a7844990724ba9c227dcc52177c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  constantDecayRate: 10
+  constantDecayRate: 750
   linearDecayRate: 0.091
   rise: 5
