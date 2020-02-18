@@ -105,7 +105,7 @@ public class PlayerShooting : MonoBehaviour
 	{
 		if (Time.timeScale == 0f)
 			return;
-
+		shootSound.pitch = Time.timeScale;
 		if (currCooldown != 0f)
 		{
 			cooldownTimer.fillAmount = currCooldown / cooldown;

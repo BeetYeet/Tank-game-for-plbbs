@@ -6,16 +6,17 @@ using UnityEngine.UI;
 
 public class Hoverable : MonoBehaviour
 {
-	Button button;
 	Animator anim;
-	void Start()
+	public AudioClip hoverSound;
+	void Awake()
 	{
-		button = GetComponent<Button>();
 		anim = GetComponent<Animator>();
 	}
 
 	public void Hover()
 	{
+		if (Time.timeSinceLevelLoad > .01f)
+			GetComponent<AudioSource>().PlayOneShot(hoverSound);
 		anim.SetBool("IsHovered", true);
 	}
 	public void DeHover()

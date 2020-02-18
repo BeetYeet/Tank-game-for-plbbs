@@ -212,7 +212,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 558690997}
-  - component: {fileID: 558690996}
   - component: {fileID: 558690995}
   m_Layer: 0
   m_Name: Scene Manager
@@ -233,23 +232,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ec4e0ca753367a41bcf93f67e18cbc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &558690996
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 558690994}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6d6b03072974454598c7d8a94e9caf2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  transitionAnim: {fileID: 636335038}
-  sceneName: MainScene
-  sceneName2: 
-  trigger: {fileID: 0}
-  trigger2: {fileID: 0}
 --- !u!4 &558690997
 Transform:
   m_ObjectHideFlags: 0

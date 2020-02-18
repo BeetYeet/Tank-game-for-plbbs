@@ -114,7 +114,7 @@ public class BulletScript : MonoBehaviour
 			Debug.LogError("No SoundManager, please make one!");
 		}
 		else
-			SoundManager.instance.PlaySingle(hitSound);
+			SoundManager.instance.RandomizeSfx(hitSound);
 		_ = Instantiate(explosionLight, transform.position, Quaternion.identity);
 		_.GetComponent<Light>().intensity *= stats.power;
 		Destroy(gameObject);
