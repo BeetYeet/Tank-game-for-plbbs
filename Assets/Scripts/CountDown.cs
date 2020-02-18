@@ -17,8 +17,12 @@ public class CountDown : MonoBehaviour
 		timer = startAt;
 		text = GetComponent<TextMeshProUGUI>();
 	}
-	void Update()
+	void LateUpdate()
 	{
+		if(Time.timeScale == 0f){
+			text.text = "";
+			return;
+		}
 		timer -= Time.deltaTime;
 		text.text = Mathf.CeilToInt(timer).ToString();
 		if (timer <= 0f)

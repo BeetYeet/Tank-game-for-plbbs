@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.EventSystems;
+
 public class StartRestartMenu : MonoBehaviour
 {
 	public GameObject player1;
@@ -26,8 +28,9 @@ public class StartRestartMenu : MonoBehaviour
 		if (player1 == null || player2 == null)
 		{
 			restartCanvas.SetActive(true);
+			EventSystem.current.SetSelectedGameObject(EventSystem.current.currentSelectedGameObject);
 			Time.timeScale = 0.1f;
-			
+
 
 			if (player1 == null)
 			{
@@ -41,6 +44,7 @@ public class StartRestartMenu : MonoBehaviour
 		else if (menuToggled)
 		{
 			restartCanvas.SetActive(true);
+			EventSystem.current.SetSelectedGameObject(EventSystem.current.currentSelectedGameObject);
 			Time.timeScale = 0f;
 			gamoverText.text = "Game Paused";
 		}
