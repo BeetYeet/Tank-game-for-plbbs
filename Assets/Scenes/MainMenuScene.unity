@@ -120,12 +120,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!95 &43775032 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 7566218933957051085, guid: 3ce47a31170a5ed428368738f1b85607,
-    type: 3}
-  m_PrefabInstance: {fileID: 7566218933930538741}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &59570516
 GameObject:
   m_ObjectHideFlags: 0
@@ -2584,7 +2578,7 @@ MonoBehaviour:
   fightSceneName: MainScene
   instructionsSceneName: InstructionsScene
   creditsSceneName: CreditsScene
-  transition: {fileID: 43775032}
+  transition: {fileID: 2079656510}
   selectionSound: {fileID: 8300000, guid: a58ed6c97499e3243a6fc7371bdeca18, type: 3}
   actionDelay: 1.25
 --- !u!1 &1672492846
@@ -3255,6 +3249,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2efb4e2d0291d9d418152a9b881f1e29, type: 3}
+--- !u!95 &2079656510 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8531296293424980537, guid: 3ce47a31170a5ed428368738f1b85607,
+    type: 3}
+  m_PrefabInstance: {fileID: 7566218933930538741}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2112581634
 GameObject:
   m_ObjectHideFlags: 0
