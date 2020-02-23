@@ -25,14 +25,14 @@ public class KeyboardButton : MonoBehaviour
 		{
 			if (button.navigation.selectOnUp != null)
 				EventSystem.current.SetSelectedGameObject(button.navigation.selectOnUp.gameObject);
-			Debug.Log("Button Up");
+			//Debug.Log("Button Up");
 		}
 
 		if (Input.GetButtonDown("Brake_P1") || Input.GetButtonDown("Brake_P2"))
 		{
 			if (button.navigation.selectOnDown != null)
 				EventSystem.current.SetSelectedGameObject(button.navigation.selectOnDown.gameObject);
-			Debug.Log("Button Down");
+			//Debug.Log("Button Down");
 		}
 		hasTakenInputThisFrame = true;
 	}

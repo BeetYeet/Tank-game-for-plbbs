@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 using UnityEngine.EventSystems;
 
 public class StartRestartMenu : MonoBehaviour
@@ -10,9 +9,13 @@ public class StartRestartMenu : MonoBehaviour
 	public GameObject player1;
 	public GameObject player2;
 	public GameObject restartCanvas;
-	public TextMeshProUGUI gamoverText;
-	public string victoryString;
+	public Image gameoverText;
+	public Button resumeButton;
+	public Sprite paused;
+	public Sprite p1Wins;
+	public Sprite p2Wins;
 	bool menuToggled = false;
+	bool gameWasOver = false;
 	private void Start()
 	{
 		if (player1 == null || player2 == null)
@@ -27,26 +30,30 @@ public class StartRestartMenu : MonoBehaviour
 
 		if (player1 == null || player2 == null)
 		{
-			restartCanvas.SetActive(true);
-			EventSystem.current.SetSelectedGameObject(EventSystem.current.currentSelectedGameObject);
-			Time.timeScale = 0.1f;
 
+			if (!gameWasOver)
+			{
+				gameWasOver = true;
+				restartCanvas.SetActive(true);
+				resumeButton.interactable = false;
+				EventSystem.current.SetSelectedGameObject(resumeButton.FindSelectableOnDown().gameObject);
+				Time.timeScale = 0.1f;
 
-			if (player1 == null)
-			{
-				gamoverText.text = "Player 2 wins";
-			}
-			else
-			{
-				gamoverText.text = "Player 1 wins";
+				if (player1 == null)
+				{
+					gameoverText.sprite = p2Wins;
+				}
+				else
+				{
+					gameoverText.sprite = p1Wins;
+				}
 			}
 		}
 		else if (menuToggled)
 		{
 			restartCanvas.SetActive(true);
-			EventSystem.current.SetSelectedGameObject(EventSystem.current.currentSelectedGameObject);
-			Time.timeScale = 0f;
-			gamoverText.text = "Game Paused";
+			Time.timeScale = Mathf.Epsilon;
+			gameoverText.sprite = paused;
 		}
 		else
 		{
@@ -54,4 +61,9 @@ public class StartRestartMenu : MonoBehaviour
 			restartCanvas.SetActive(false);
 		}
 	}
+	public void Resume()
+	{
+		menuToggled = false;
+	}
+
 }

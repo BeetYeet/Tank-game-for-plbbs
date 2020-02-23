@@ -14,6 +14,10 @@ public class SoundManager : MonoBehaviour
 	public static SoundManager instance = null;
 
 	public AudioClip music;
+
+	public float musicVolumeDefault = 1f;
+	public float musicVolumePaused = 0.5f;
+
 	float pitch = 1f;
 
 	//How to use
@@ -81,18 +85,19 @@ public class SoundManager : MonoBehaviour
 				break;
 		}
 		pitch = Mathf.Lerp(pitch, newPitch, 0.95f);
-		if (Time.timeScale == 0f)
-		{
-			eFXsound.pitch = 0f;
-			firstPlayerSource.pitch = 0f;
-			secondPlayerSource.pitch = 0f;
-		}
-		else
+		if (Time.timeScale != Mathf.Epsilon)
 		{
 			eFXsound.pitch = pitch;
 			firstPlayerSource.pitch = pitch;
 			secondPlayerSource.pitch = pitch;
+			musicSource.volume = Mathf.Lerp(musicSource.volume, musicVolumeDefault, 0.75f); ;
 		}
-		musicSource.pitch = Mathf.Lerp(musicSource.pitch, Time.timeScale != 0f ? 1f : 0f, .99f);
+		else
+		{
+			eFXsound.pitch = 0f;
+			firstPlayerSource.pitch = 0f;
+			secondPlayerSource.pitch = 0f;
+			musicSource.volume = Mathf.Lerp(musicSource.volume, musicVolumePaused, 0.75f);
+		}
 	}
 }

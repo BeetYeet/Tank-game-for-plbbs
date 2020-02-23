@@ -7,20 +7,45 @@ using UnityEngine.UI;
 public class Hoverable : MonoBehaviour
 {
 	Animator anim;
-	public AudioClip hoverSound;
+	public AudioSource hoverSound;
+	public AudioSource clickSound;
 	void Awake()
 	{
 		anim = GetComponent<Animator>();
+		if (hoverSound != null)
+		{
+			hoverSound.Stop();
+			hoverSound.ignoreListenerPause = true;
+		}
+
+		if (clickSound != null)
+		{
+			clickSound.Stop();
+			clickSound.ignoreListenerPause = true;
+		}
 	}
 
 	public void Hover()
 	{
 		if (Time.timeSinceLevelLoad > .01f)
-			GetComponent<AudioSource>().PlayOneShot(hoverSound);
+		{
+			float scale = Time.timeScale;
+			Time.timeScale = 1;
+			hoverSound.Play();
+			Time.timeScale = scale;
+		}
 		anim.SetBool("IsHovered", true);
 	}
 	public void DeHover()
 	{
 		anim.SetBool("IsHovered", false);
+	}
+
+	public void PlayClickSound()
+	{
+		float scale = Time.timeScale;
+		Time.timeScale = 1;
+		clickSound.Play();
+		Time.timeScale = scale;
 	}
 }
