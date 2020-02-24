@@ -3,17 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using System.Linq;
 
 public class StartRestartMenu : MonoBehaviour
 {
 	public GameObject player1;
 	public GameObject player2;
 	public GameObject restartCanvas;
-	public Image gameoverText;
+	public Transform gameoverTextParent;
+	public GameObject gameoverText;
 	public Button resumeButton;
-	public Sprite paused;
-	public Sprite p1Wins;
-	public Sprite p2Wins;
+	public GameObject paused;
+	public GameObject p1Wins;
+	public GameObject p2Wins;
 	bool menuToggled = false;
 	bool gameWasOver = false;
 	private void Start()
@@ -26,7 +28,10 @@ public class StartRestartMenu : MonoBehaviour
 	void Update()
 	{
 		if (Input.GetButtonDown("Menu"))
+		{
 			menuToggled = !menuToggled;
+			ReplaceWith(paused);
+		}
 
 		if (player1 == null || player2 == null)
 		{
@@ -41,11 +46,11 @@ public class StartRestartMenu : MonoBehaviour
 
 				if (player1 == null)
 				{
-					gameoverText.sprite = p2Wins;
+					ReplaceWith(p2Wins);
 				}
 				else
 				{
-					gameoverText.sprite = p1Wins;
+					ReplaceWith(p1Wins);
 				}
 			}
 		}
@@ -53,7 +58,6 @@ public class StartRestartMenu : MonoBehaviour
 		{
 			restartCanvas.SetActive(true);
 			Time.timeScale = Mathf.Epsilon;
-			gameoverText.sprite = paused;
 		}
 		else
 		{
@@ -61,6 +65,13 @@ public class StartRestartMenu : MonoBehaviour
 			restartCanvas.SetActive(false);
 		}
 	}
+
+	private void ReplaceWith(GameObject newGameobject)
+	{
+		Destroy(gameoverText);
+		gameoverText = Instantiate(newGameobject, gameoverTextParent);
+	}
+
 	public void Resume()
 	{
 		menuToggled = false;
